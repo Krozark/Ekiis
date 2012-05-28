@@ -13,14 +13,14 @@ class Body
 
         virtual ~Body();
 
-        void Next();
+        virtual void Next();
         inline void Draw(sf::RenderTarget& window){window.Draw(*shape);};
         inline void SetPosition(float X,float Y){bodyDef.position.Set(toMet(X),-toMet(Y)); shape->SetPosition(sf::Vector2f(X,Y));}
         inline void SetDensity(float d=1){body->DestroyFixture(fixture);fixtureDef.density=d;fixture=body->CreateFixture(&fixtureDef);};
         inline void SetFriction(float v=0.3){body->DestroyFixture(fixture);fixtureDef.friction=v;fixture=body->CreateFixture(&fixtureDef);};
         inline void SetElasticity(float e=0.5){body->DestroyFixture(fixture);fixtureDef.restitution=e;fixture=body->CreateFixture(&fixtureDef);};
         inline void SetRotation(float angle){body->SetTransform(body->GetPosition(),toRad(angle));shape->SetRotation(angle);}
-        void DistanceJoinWith(Body& other,float Ax,float Ay,float Bx,float By);
+        void DistanceJoinWith(Body& other,float Ax,float Ay,float Bx,float By,float hz=0);
 
         void SetColor(sf::Color couleur);
 

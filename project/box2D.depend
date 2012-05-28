@@ -1008,38 +1008,50 @@
 1336002218 /home/krozark/Documents/Projet/box2D/Convex.hpp
 	"body.hpp"
 
-1336013436 source:/media/dev/Projet/box2D/Circle.cpp
+1338179974 source:/media/dev/Projet/box2D/Circle.cpp
 	"Circle.hpp"
 
 1336002204 /media/dev/Projet/box2D/Circle.hpp
 	"body.hpp"
 
-1336017816 /media/dev/Projet/box2D/body.hpp
+1338179162 /media/dev/Projet/box2D/body.hpp
 	<SFML/Graphics.hpp>
 	<Box2D/Box2D.h>
 	"convert.h"
 
-1336005384 /media/dev/Projet/box2D/convert.h
+1338178545 /media/dev/Projet/box2D/convert.h
 	<SFML/Graphics.hpp>
 	<Box2D/Box2D.h>
 
-1336002226 source:/media/dev/Projet/box2D/Rect.cpp
+1338070602 source:/media/dev/Projet/box2D/Rect.cpp
 	"Rect.hpp"
 
 1336002236 /media/dev/Projet/box2D/Rect.hpp
 	"body.hpp"
 
-1336200431 source:/media/dev/Projet/box2D/body.cpp
+1338179838 source:/media/dev/Projet/box2D/body.cpp
 	"body.hpp"
 
-1336060454 source:/media/dev/Projet/box2D/main.cpp
+1338179901 source:/media/dev/Projet/box2D/main.cpp
 	"Rect.hpp"
 	"Circle.hpp"
 	"Convex.hpp"
+	"SoftCircle.hpp"
 	"convert.h"
 	"math.h"
 	<iostream>
 
 1336002218 /media/dev/Projet/box2D/Convex.hpp
+	"body.hpp"
+
+1338071420 source:/media/dev/Projet/box2D/Convex.cpp
+	"Convex.hpp"
+
+1338179745 source:/media/dev/Projet/box2D/SoftCircle.cpp
+	"SoftCircle.hpp"
+	"Circle.hpp"
+	"math.h"
+
+1338179646 /media/dev/Projet/box2D/SoftCircle.hpp
 	"body.hpp"
 

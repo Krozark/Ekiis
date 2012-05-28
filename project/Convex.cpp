@@ -32,5 +32,11 @@ ConvexBody::ConvexBody (float posx,float posy,const Vector2f *vertices,int verte
     SetPosition(posx,posy);
 
     shape->SetFillColor(Color::White);
+
+
+    /*Texture * text = new Texture();
+    text->LoadFromFile("b.png");
+
+    shape->SetTexture(text);*/
 };
 

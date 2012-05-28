@@ -13,9 +13,8 @@ Body::Body (float posx,float posy,b2BodyType type)
     body->SetUserData( this );
 
     fixtureDef.density = 1.0f;      // densité de 1
-    fixtureDef.friction = 0.3f;     // friction de 1
-    fixtureDef.restitution=1.1;
-
+    fixtureDef.friction = 0.4f;     // friction de 1
+    fixtureDef.restitution= 0.5;
 
 };
 
@@ -38,19 +37,17 @@ void Body::SetColor(sf::Color couleur)
 }
 
 
-void Body::DistanceJoinWith(Body& other,float Ax,float Ay,float Bx,float By)
+void Body::DistanceJoinWith(Body& other,float Ax,float Ay,float Bx,float By,float hz)
 {
     b2DistanceJointDef jd;
     b2Vec2 d;
 
-    jd.bodyA = (body); //b2body*
-    jd.bodyB = (other.body);//idem
+    jd.Initialize(
+      body, other.body,
+      body->GetWorldCenter(), other.body->GetWorldCenter()
+    );
+    jd.collideConnected = true;
+    jd.frequencyHz = hz;
 
-    jd.localAnchorA.Set(toMet(Ax),-toMet(Ay));
-    jd.localAnchorB.Set(toMet(Bx),-toMet(By));
-
-    d = other.body->GetWorldPoint(jd.localAnchorB) - body->GetWorldPoint(jd.localAnchorA);
-
-    jd.length = d.Length();
     world.CreateJoint(&jd);
 }

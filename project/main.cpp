@@ -1,6 +1,7 @@
 #include "Rect.hpp"
 #include "Circle.hpp"
 #include "Convex.hpp"
+#include "SoftCircle.hpp"
 
 #include "convert.h"
 #include  "math.h"
@@ -59,26 +60,13 @@ int main(int argc, char * argv[])
     vertices[4].x= 10*3;vertices[4].y=10*3;
 
 
-    Body* a = new CircleBody(0,0,8);
-    Body* c = a;
-    a->SetColor(Color(255,0,50));
-    int max = 20;
-    for (int i=1;i<max;++i)
-    {
-        Body* b = new CircleBody(cos(180.0/(max-1) * i),sin(180.0/(max-1)*i),10);
-        b->SetColor(Color(255-9*i,12*i,50+7*i));
-        a->DistanceJoinWith(*b,-3,0,3,0);
-        b->DistanceJoinWith(*a,-3,0,3,0);
-        a=b;
-    }
-    a->DistanceJoinWith(*c,-3,0,3,0);
-    c->DistanceJoinWith(*a,-3,0,3,0);
+    new CircleBody(0,0,15);
+    new CircleBody(0,0,15);
+    new CircleBody(0,0,15);
 
-    a = new CircleBody(0,0,15);
-    a = new CircleBody(0,0,15);
-    a = new CircleBody(0,0,15);
-    a = new CircleBody(0,0,15);
-    a = new CircleBody(0,0,15);
+
+    new SoftCircle(5,50,30);
+    new SoftCircle(20,-50,30);
 
     // MAIN LOOP
     while(app.IsOpen())
@@ -127,7 +115,7 @@ int main(int argc, char * argv[])
               s.SetPoint(3,A);
 
               s.SetOutlineColor(Color::Yellow);
-              s.SetOutlineThickness(1);
+              s.SetOutlineThickness(0.2);
 
               app.Draw(s);
 

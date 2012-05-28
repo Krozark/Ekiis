@@ -47,9 +47,12 @@
 		</Linker>
 		<Unit filename="Circle.cpp" />
 		<Unit filename="Circle.hpp" />
+		<Unit filename="Convex.cpp" />
 		<Unit filename="Convex.hpp" />
 		<Unit filename="Rect.cpp" />
 		<Unit filename="Rect.hpp" />
+		<Unit filename="SoftCircle.cpp" />
+		<Unit filename="SoftCircle.hpp" />
 		<Unit filename="body.cpp" />
 		<Unit filename="body.hpp" />
 		<Unit filename="convert.h" />
