@@ -60,13 +60,11 @@ int main(int argc, char * argv[])
     vertices[4].x= 10*3;vertices[4].y=10*3;
 
 
-    new CircleBody(0,0,15);
-    new CircleBody(0,0,15);
-    new CircleBody(0,0,15);
+    //new CircleBody(0,0,15);
 
 
-    new SoftCircle(5,50,30);
-    new SoftCircle(20,-50,30);
+    new SoftCircle(5,-160,40);
+    new SoftCircle(20,-100,30);
 
     // MAIN LOOP
     while(app.IsOpen())

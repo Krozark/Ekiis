@@ -39,6 +39,9 @@
 			<Add option="-fpermissive" />
 		</Compiler>
 		<Linker>
+			<Add option="-lGL" />
+			<Add option="-lGLU" />
+			<Add option="-lGLEW" />
 			<Add library="sfml-audio" />
 			<Add library="sfml-graphics" />
 			<Add library="sfml-network" />

@@ -1014,8 +1014,9 @@
 1336002204 /media/dev/Projet/box2D/Circle.hpp
 	"body.hpp"
 
-1338179162 /media/dev/Projet/box2D/body.hpp
+1338243494 /media/dev/Projet/box2D/body.hpp
 	<SFML/Graphics.hpp>
+	<SFML/OpenGL.hpp>
 	<Box2D/Box2D.h>
 	"convert.h"
 
@@ -1029,10 +1030,10 @@
 1336002236 /media/dev/Projet/box2D/Rect.hpp
 	"body.hpp"
 
-1338179838 source:/media/dev/Projet/box2D/body.cpp
+1338243496 source:/media/dev/Projet/box2D/body.cpp
 	"body.hpp"
 
-1338179901 source:/media/dev/Projet/box2D/main.cpp
+1338244430 source:/media/dev/Projet/box2D/main.cpp
 	"Rect.hpp"
 	"Circle.hpp"
 	"Convex.hpp"
@@ -1047,11 +1048,22 @@
 1338071420 source:/media/dev/Projet/box2D/Convex.cpp
 	"Convex.hpp"
 
-1338179745 source:/media/dev/Projet/box2D/SoftCircle.cpp
+1338244509 source:/media/dev/Projet/box2D/SoftCircle.cpp
 	"SoftCircle.hpp"
 	"Circle.hpp"
 	"math.h"
+	<SFML/OpenGL.hpp>
 
-1338179646 /media/dev/Projet/box2D/SoftCircle.hpp
+1338244724 /media/dev/Projet/box2D/SoftCircle.hpp
 	"body.hpp"
+
+1326664745 /usr/local/include//SFML/OpenGL.hpp
+	<SFML/Config.hpp>
+	<windows.h>
+	<GL/gl.h>
+	<GL/glu.h>
+	<GL/gl.h>
+	<GL/glu.h>
+	<OpenGL/gl.h>
+	<OpenGL/glu.h>
 

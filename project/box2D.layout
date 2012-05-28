@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Debug" />
-	<File name="Circle.cpp" open="1" top="1" tabpos="5">
+	<File name="Circle.cpp" open="0" top="0" tabpos="5">
 		<Cursor position="525" topLine="0" />
 	</File>
 	<File name="Circle.hpp" open="0" top="0" tabpos="0">
@@ -16,22 +16,22 @@
 	<File name="Rect.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="353" topLine="0" />
 	</File>
-	<File name="SoftCircle.cpp" open="1" top="0" tabpos="3">
-		<Cursor position="1521" topLine="9" />
+	<File name="SoftCircle.cpp" open="1" top="1" tabpos="3">
+		<Cursor position="2507" topLine="72" />
 	</File>
 	<File name="SoftCircle.hpp" open="1" top="0" tabpos="4">
-		<Cursor position="243" topLine="0" />
+		<Cursor position="408" topLine="0" />
 	</File>
-	<File name="body.cpp" open="1" top="0" tabpos="6">
-		<Cursor position="410" topLine="0" />
+	<File name="body.cpp" open="1" top="0" tabpos="5">
+		<Cursor position="844" topLine="8" />
 	</File>
 	<File name="body.hpp" open="1" top="0" tabpos="2">
-		<Cursor position="1107" topLine="0" />
+		<Cursor position="1090" topLine="3" />
 	</File>
 	<File name="convert.h" open="0" top="0" tabpos="0">
 		<Cursor position="146" topLine="0" />
 	</File>
 	<File name="main.cpp" open="1" top="0" tabpos="1">
-		<Cursor position="1473" topLine="58" />
+		<Cursor position="1505" topLine="62" />
 	</File>
 </CodeBlocks_layout_file>

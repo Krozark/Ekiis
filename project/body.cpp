@@ -37,7 +37,7 @@ void Body::SetColor(sf::Color couleur)
 }
 
 
-void Body::DistanceJoinWith(Body& other,float Ax,float Ay,float Bx,float By,float hz)
+void Body::DistanceJoinWith(Body& other,float hz)
 {
     b2DistanceJointDef jd;
     b2Vec2 d;
