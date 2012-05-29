@@ -2,22 +2,27 @@
 #include "Circle.hpp"
 #include  "math.h"
 #include <SFML/OpenGL.hpp>
-/*
 
-*/
+#include <iostream>
+
 
 using namespace sf;
+using namespace std;
 
-SoftCircle::SoftCircle(float posx,float posy,float rayon): Body(posx,posy), nb_circles(20)
+SoftCircle::SoftCircle(float posx,float posy,float rayon,float duretee,const unsigned int quatily): Body(posx,posy), nb_circles(quatily>8?quatily:8), texture(0)
 {
+    if (duretee >1)
+        duretee = 1;
+    else if (duretee<0)
+        duretee=0;
   // Determine part radius
     const float angleStep = (pi * 2.0f) / nb_circles;
     const float sinHalfAngle = sinf(angleStep * 0.5f);
     const float subCircleRadius = sinHalfAngle * rayon / (1.0f + sinHalfAngle);
-    float radius = (rayon - subCircleRadius * 2.0f) * (1.0f - 0.7);
+    float radius = (rayon - subCircleRadius * 2.0f) * (1.0f - duretee);
 
     /// create the centre circle
-    shape = new CircleShape(rayon);
+    shape = new CircleShape(radius);
     b2shape = new b2CircleShape;
     static_cast<b2CircleShape*>(b2shape)->m_p.Set(0,0); //position, relative to body position
     static_cast<b2CircleShape*>(b2shape)->m_radius = toMet(radius); //radius
@@ -25,7 +30,7 @@ SoftCircle::SoftCircle(float posx,float posy,float rayon): Body(posx,posy), nb_c
     fixtureDef.shape = b2shape;
     fixture=body->CreateFixture(&fixtureDef);
 
-    shape->SetOrigin(rayon,rayon);
+    shape->SetOrigin(radius,radius);
     SetPosition(posx,posy);
     SetColor(Color::Red);
 
@@ -33,81 +38,119 @@ SoftCircle::SoftCircle(float posx,float posy,float rayon): Body(posx,posy), nb_c
     bodys = new Body*[nb_circles];
     textcoord  = new fpoint[nb_circles];
 
-    float angle = 0;
-     for (unsigned int i=0;i<nb_circles;++i)
     {
-        float c = cos(angle);
-        float s = sin(angle);
-        bodys[i] = new CircleBody(
-                      c*(rayon-subCircleRadius)+posx,
-                      s*(rayon-subCircleRadius)+posy,
-                      subCircleRadius);
-        ///TODO
-        textcoord[i].x = c*rayon + posx;
-        textcoord[i].y = s*rayon + posy;
+        float angle = 0;
+        for (unsigned int i=0;i<nb_circles;++i)
+        {
+            float c = cos(angle);
+            float s = sin(angle);
 
-        angle += angleStep;
+            bodys[i] = new CircleBody(
+                          c*(rayon-subCircleRadius)+posx,
+                          s*(rayon-subCircleRadius)+posy,
+                          subCircleRadius);
+            ///TODO
+            if (angle <= pi/4) // 45
+            {
+                textcoord[i].x = 1;
+                textcoord[i].y = tan(angle);
+            }
+            else if (angle < pi/2.0 ) //90
+            {
+                textcoord[i].x = 1-tan(angle-pi/4.0);
+                textcoord[i].y = 1;
+
+            }
+            else if (angle  < 3.0*pi/4 ) //135
+            {
+                textcoord[i].x = -tan(angle- pi/2.0 ) +1;
+                textcoord[i].y = 1;
+            }
+            else if (angle  <= pi) //180
+            {
+                textcoord[i].x = -1;
+                textcoord[i].y = 1- tan(angle- 3.0*pi/4.0);
+            }
+            else if (angle  <= 5.0*pi/4.0 ) //225
+            {
+                textcoord[i].x = -1;
+                textcoord[i].y = -tan(angle);
+
+            }
+            else if (angle  < 6.0*pi/4.0) //270
+            {
+                textcoord[i].x = tan(angle - pi/4.0)-1;
+                textcoord[i].y = -1;
+            }
+            else if (angle  <= 7.0*pi/4.0) //315
+            {
+                textcoord[i].x = tan(angle -3.0*pi/4.0) +1;
+                textcoord[i].y = -1;
+            }
+            else //360
+            {
+                textcoord[i].x = 1;
+                textcoord[i].y = 1-tan(angle-3.0*pi/4.0);
+            }
+
+            cout<<double(toDeg(angle))<<"\t"<<textcoord[i].x<<"\t"<<textcoord[i].y<<endl;
+            textcoord[i].x = (1 + textcoord[i].x)/2 ;
+            textcoord[i].y = (1 + textcoord[i].y)/2;
+
+            angle += angleStep;
+        }
     }
-
     // join together
     b2DistanceJointDef jointDef;
     for (unsigned int i=0;i<nb_circles;++i)
     {
         const int neighborIndex = (i + 1)< nb_circles?i+1:0;
-        bodys[i]->DistanceJoinWith(*this,5);
+        //bodys[i]->DistanceJoinWith(*this,4+nb_circles/10);
+        bodys[i]->DistanceJoinWith(*this,10-duretee*10);
         bodys[i]->DistanceJoinWith(*bodys[neighborIndex],10);
+
     }
 };
 
 void SoftCircle::Draw(sf::RenderTarget& window)
 {
-
-    /*GLuint texture = 0;
+    if (texture)
     {
-        sf::Image image;
-        if (!image.LoadFromFile("b.png"))
-            return;
-        glGenTextures(1, &texture);
-        glBindTexture(GL_TEXTURE_2D, texture);
-        gluBuild2DMipmaps(GL_TEXTURE_2D, GL_RGBA, image.GetWidth(), image.GetHeight(), GL_RGBA, GL_UNSIGNED_BYTE, image.GetPixelsPtr());
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+     glBindTexture(GL_TEXTURE_2D, texture);
+     glEnable(GL_TEXTURE_2D);
     }
 
-
-    // Enable Z-buffer read and write
-    glEnable(GL_DEPTH_TEST);
-    glDepthMask(GL_TRUE);
-    glClearDepth(10.f);
-
     // Bind our texture
-    glEnable(GL_TEXTURE_2D);
-    glBindTexture(GL_TEXTURE_2D, texture);
+    glClear(GL_DEPTH_BUFFER_BIT);
     glColor4f(1.f, 1.f, 1.f, 1.f);
 
-    //window.SetActive();
-    glClear(GL_DEPTH_BUFFER_BIT);
     glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
 
-    glTranslatef(0,0, -10.0f); /// position
+    #define z -100
+    glTranslatef(0,0, z);
 
-
-    glBegin(GL_TRIANGLE_STRIP);
-
-            glTexCoord2f(textcoord[nb_circles-1].x, textcoord[nb_circles-1].y); glVertex3f(-1, -1, 10);
-            glTexCoord2f(0.5, 0.5); glVertex3f(0, 0, 10);
+    glBegin(GL_TRIANGLE_FAN);
+            b2Vec2 origine = body->GetPosition();
+            glTexCoord2f(0.5, 0.5);
+            glVertex3f(toPix(origine.x),-toPix(origine.y), -z);
 
             for(unsigned int i=0;i<nb_circles;++i)
             {
-                glTexCoord2f(textcoord[i].x, textcoord[i].y); glVertex3f(-size, -size, 10);
+                b2Vec2 centre = bodys[i]->body->GetPosition();
+                centre += (1.0/6)*(centre -  origine);
+                glTexCoord2f(textcoord[i].x, textcoord[i].y);
+                glVertex3f(toPix(centre.x),-toPix(centre.y), -z);
             }
-
+            b2Vec2 centre = bodys[0]->body->GetPosition();
+            centre += (1.0/6)*(centre -  origine);
+            glTexCoord2f(textcoord[0].x, textcoord[0].y);
+            glVertex3f(toPix(centre.x),-toPix(centre.y), -z);
 
     glEnd();
 
-    glDeleteTextures(1, &texture);
-*/
-    //window.Draw(*shape);
+    glDisable(GL_TEXTURE_2D);
+
 };
 
 SoftCircle::~SoftCircle()

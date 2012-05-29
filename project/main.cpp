@@ -31,6 +31,19 @@ int main(int argc, char * argv[])
     app.SetFramerateLimit(fps);
 
 
+    // Enable Z-buffer read and write
+    glEnable(GL_DEPTH_TEST);
+    glDepthMask(GL_TRUE);
+    glClearDepth(1.f);
+    glEnable(GL_TEXTURE_2D);
+
+
+    // Setup a perspective projection
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    //gluPerspective(90.f, 1.f, 1.f, 500.f);
+
+
     Vector2f center(0, 0);
     Vector2f halfSize(WIDTH/2, HEIGHT/2);
     View view(center, halfSize);
@@ -40,31 +53,33 @@ int main(int argc, char * argv[])
 
     RectBody* ground[4];
 
-    ground[0] = new RectBody(0,200,1000,10,b2_staticBody);
+    ground[0] = new RectBody(0,150,1000,10,b2_staticBody);
+    //ground[0]->SetRotation(20);
+
     ground[1] = new RectBody(200,0,1000,10,b2_staticBody);
-    ground[2] = new RectBody(0,-200,1000,10,b2_staticBody);
+    ground[1]->SetRotation(90);
+
+    ground[2] = new RectBody(0,-250,1000,10,b2_staticBody);
+    ground[2]->SetRotation(180);
+
     ground[3] = new RectBody(-200,0,1000,10,b2_staticBody);
-
-    for (unsigned int i=0;i<4;++i)
-    {
-        ground[i]->SetColor(Color::Cyan);
-        ground[i]->SetRotation(i*(90-5));
-        ground[i]->SetFriction(1);
-    }
-
-    Vector2f vertices[4];
-    vertices[0].x=-10*3;vertices[0].y=20*3;
-    vertices[1].x=-10*3;vertices[1].y=0;
-    vertices[2].x=0;vertices[2].y=-30*3;
-    vertices[3].x=10*3;vertices[3].y=0;
-    vertices[4].x= 10*3;vertices[4].y=10*3;
-
+    ground[3]->SetRotation(90);
 
     //new CircleBody(0,0,15);
+     GLuint texture = 0;
+    {
+        sf::Image image;
+        if (!image.LoadFromFile("b.png"))
+            exit(1);
+        glGenTextures(1, &texture);
+        glBindTexture(GL_TEXTURE_2D, texture);
+        gluBuild2DMipmaps(GL_TEXTURE_2D, GL_RGBA, image.GetWidth(), image.GetHeight(), GL_RGBA, GL_UNSIGNED_BYTE, image.GetPixelsPtr());
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+    }
 
+    (new SoftCircle(5,-160,60,0,16))->SetTexture(texture);
 
-    new SoftCircle(5,-160,40);
-    new SoftCircle(20,-100,30);
 
     // MAIN LOOP
     while(app.IsOpen())
@@ -81,6 +96,7 @@ int main(int argc, char * argv[])
         world.Step(timeStep, velocityIter, positionIter); // on calcule la frame suivante
 
         app.Clear();
+
         {
 
             b2Body* b = world.GetBodyList();//get start of list
@@ -121,9 +137,8 @@ int main(int argc, char * argv[])
               b = b->GetNext();
             }
         }
-
         app.Display();
     }
-
+    glDeleteTextures(1, &texture);
     return EXIT_SUCCESS;
 }

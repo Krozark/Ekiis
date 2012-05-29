@@ -27,7 +27,8 @@ Body::~Body()
 
 void Body::Next()
 {
-     shape->SetPosition(toPix(body->GetPosition().x),-toPix(body->GetPosition().y));
+     b2Vec2 origine = body->GetPosition();
+     shape->SetPosition(toPix(origine.x),-toPix(origine.y));
      shape->SetRotation(-toDeg(body->GetAngle())); // inutile ici...
 };
 
@@ -40,7 +41,7 @@ void Body::SetColor(sf::Color couleur)
 void Body::DistanceJoinWith(Body& other,float hz)
 {
     b2DistanceJointDef jd;
-    b2Vec2 d;
+    //b2Vec2 d;
 
     jd.Initialize(
       body, other.body,
