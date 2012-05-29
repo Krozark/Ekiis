@@ -9,7 +9,7 @@
 using namespace sf;
 using namespace std;
 
-SoftCircle::SoftCircle(float posx,float posy,float rayon,float duretee,const unsigned int quatily): Body(posx,posy), nb_circles(quatily>8?quatily:8), texture(0)
+SoftCircle::SoftCircle(float posx,float posy,float rayon,float duretee,const unsigned int quality): Body(posx,posy), nb_circles(quality>8?quality:8), texture(0)
 {
     if (duretee >1)
         duretee = 1;
