@@ -7,7 +7,7 @@ class SoftCircle : public Body // , Sprite
 {
 
     public :
-        SoftCircle(float posx,float posy,float rayon,float duretee=0.5f,const unsigned int quality=20);
+        SoftCircle(float posx,float posy,float rayon,float duretee=0.5f,const unsigned int quality=24);
         void Draw(sf::RenderTarget& window);
         inline void SetTexture(GLuint t){texture =t;}
         ~SoftCircle();

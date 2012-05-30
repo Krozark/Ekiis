@@ -53,16 +53,16 @@ int main(int argc, char * argv[])
 
     RectBody* ground[4];
 
-    ground[0] = new RectBody(0,350,1000,10,b2_staticBody);
-    ground[0]->SetRotation(20);
+    ground[0] = new RectBody(0,300,10000,10,b2_staticBody);
+    ground[0]->SetRotation(25);
 
-    ground[1] = new RectBody(300,0,1000,10,b2_staticBody);
+    ground[1] = new RectBody(300,0,10000,10,b2_staticBody);
     ground[1]->SetRotation(90);
 
-    ground[2] = new RectBody(0,-350,1000,10,b2_staticBody);
+    ground[2] = new RectBody(0,-3500,10000,10,b2_staticBody);
     ground[2]->SetRotation(180);
 
-    ground[3] = new RectBody(-300,0,1000,10,b2_staticBody);
+    ground[3] = new RectBody(-400,0,10000,10,b2_staticBody);
     ground[3]->SetRotation(90);
 
     //new CircleBody(0,0,15);

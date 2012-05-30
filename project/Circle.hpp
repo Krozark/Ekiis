@@ -7,6 +7,7 @@ class CircleBody : public Body
 {
     public:
         CircleBody (float posx,float posy,float rayon,b2BodyType type = b2_dynamicBody);
+        void Draw(sf::RenderTarget& window) {} ;
 };
 
 #endif
