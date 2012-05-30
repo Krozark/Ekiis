@@ -45,7 +45,7 @@ int main(int argc, char * argv[])
 
 
     Vector2f center(0, 0);
-    Vector2f halfSize(WIDTH/2, HEIGHT/2);
+    Vector2f halfSize(WIDTH, HEIGHT);
     View view(center, halfSize);
     app.SetView(view); // centrage de la zone de rendu sur (0;0)
     // BOX2D
@@ -53,16 +53,16 @@ int main(int argc, char * argv[])
 
     RectBody* ground[4];
 
-    ground[0] = new RectBody(0,150,1000,10,b2_staticBody);
-    //ground[0]->SetRotation(20);
+    ground[0] = new RectBody(0,350,1000,10,b2_staticBody);
+    ground[0]->SetRotation(20);
 
-    ground[1] = new RectBody(200,0,1000,10,b2_staticBody);
+    ground[1] = new RectBody(300,0,1000,10,b2_staticBody);
     ground[1]->SetRotation(90);
 
-    ground[2] = new RectBody(0,-250,1000,10,b2_staticBody);
+    ground[2] = new RectBody(0,-350,1000,10,b2_staticBody);
     ground[2]->SetRotation(180);
 
-    ground[3] = new RectBody(-200,0,1000,10,b2_staticBody);
+    ground[3] = new RectBody(-300,0,1000,10,b2_staticBody);
     ground[3]->SetRotation(90);
 
     //new CircleBody(0,0,15);
@@ -77,9 +77,7 @@ int main(int argc, char * argv[])
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
     }
-
-    (new SoftCircle(5,-160,60,0,16))->SetTexture(texture);
-
+    //(new SoftCircle(100,-160,30,0.6,32))->SetTexture(texture);
 
     // MAIN LOOP
     while(app.IsOpen())
@@ -91,6 +89,11 @@ int main(int argc, char * argv[])
                 app.Close();
             else if ((event.Type == sf::Event::KeyPressed) && (event.Key.Code == sf::Keyboard::Escape))
                 app.Close();
+            else if ((event.Type == sf::Event::MouseButtonPressed) && (event.MouseButton.Button == sf::Mouse::Left)){
+                Vector2i pos = sf::Mouse::GetPosition(app);
+                float nb = (rand()/((double)RAND_MAX))*60+30;
+                (new SoftCircle(pos.x-WIDTH/2,pos.y-HEIGHT/2,nb,0.6,32))->SetTexture(texture);
+            }
         }
 
         world.Step(timeStep, velocityIter, positionIter); // on calcule la frame suivante
@@ -113,7 +116,7 @@ int main(int argc, char * argv[])
             }
         }
 
-        {
+        /*{
             b2Joint* b =world.GetJointList ();
             while ( b != NULL )
             {
@@ -136,7 +139,7 @@ int main(int argc, char * argv[])
               //continue to next body
               b = b->GetNext();
             }
-        }
+        }*/
         app.Display();
     }
     glDeleteTextures(1, &texture);
