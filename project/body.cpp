@@ -11,8 +11,6 @@ Body::Body (float posx,float posy,b2BodyType type) : NotDrawableBody(posx,posy,t
 
 Body::~Body()
 {
-    // world.DestroyJoint(joints);
-    world.DestroyBody(body);
     delete b2shape;
 }
 

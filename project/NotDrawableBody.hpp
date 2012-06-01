@@ -4,12 +4,14 @@
 #include <Box2D/Box2D.h>
 #include "convert.h"
 
+class Body;
+class SoftCircle;
 
 class NotDrawableBody{
 
      public:
         NotDrawableBody(float posx,float posy,b2BodyType type = b2_dynamicBody);
-        virtual ~NotDrawableBody();
+        ~NotDrawableBody();
 
         virtual void SetPosition(float X,float Y){bodyDef.position.Set(toMet(X),-toMet(Y));}
         virtual void SetRotation(float angle){body->SetTransform(body->GetPosition(),toRad(angle));}
@@ -22,12 +24,17 @@ class NotDrawableBody{
         void DistanceJoinWith(NotDrawableBody& other,float hz=0);
 
 
-    //protected :
+    protected :
+
+        friend class Body;
+        friend class SoftCircle;
+
         static b2BodyDef bodyDef;
-        b2Body* body;
         b2Shape* b2shape;
+        b2Body* body;
         static b2FixtureDef fixtureDef;
         b2Fixture* fixture;
+
 };
 extern b2World world;
 
