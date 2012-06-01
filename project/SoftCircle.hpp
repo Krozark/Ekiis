@@ -2,6 +2,7 @@
 #define SOFTCIRCLE_HPP
 
 #include "body.hpp"
+#include "NotDrawableCircle.hpp"
 
 class SoftCircle : public Body // , Sprite
 {
@@ -14,7 +15,7 @@ class SoftCircle : public Body // , Sprite
 
     private:
         const unsigned int nb_circles;
-        Body** bodys;
+        NotDrawableCircleBody** bodys;
 
         struct fpoint{
             float x,y;

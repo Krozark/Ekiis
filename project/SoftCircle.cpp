@@ -35,7 +35,7 @@ SoftCircle::SoftCircle(float posx,float posy,float rayon,float duretee,const uns
     SetColor(Color::Red);
 
     /// create the other
-    bodys = new Body*[nb_circles];
+    bodys = new NotDrawableCircleBody*[nb_circles];
     textcoord  = new fpoint[nb_circles];
 
     {
@@ -45,7 +45,7 @@ SoftCircle::SoftCircle(float posx,float posy,float rayon,float duretee,const uns
             float c = cos(angle);
             float s = sin(angle);
 
-            bodys[i] = new CircleBody(
+            bodys[i] = new NotDrawableCircleBody(
                           c*(rayon-subCircleRadius)+posx,
                           s*(rayon-subCircleRadius)+posy,
                           subCircleRadius);

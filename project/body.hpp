@@ -1,42 +1,32 @@
 #ifndef BODY_HPP
 #define BODY_HPP
 
-
 #include <SFML/Graphics.hpp>
 #include <SFML/OpenGL.hpp>
-#include <Box2D/Box2D.h>
-#include "convert.h"
+
+#include "NotDrawableBody.hpp"
 
 
-class Body
+class Body : public NotDrawableBody
 {
     public:
         Body (float posx,float posy,b2BodyType type = b2_dynamicBody);
-
         virtual ~Body();
 
-        virtual void Next();
-        virtual void Draw(sf::RenderTarget& window){window.Draw(*shape);};
-        inline void SetPosition(float X,float Y){bodyDef.position.Set(toMet(X),-toMet(Y)); shape->SetPosition(sf::Vector2f(X,Y));}
-        inline void SetDensity(float d=1){body->DestroyFixture(fixture);fixtureDef.density=d;fixture=body->CreateFixture(&fixtureDef);};
-        inline void SetFriction(float v=0.3){body->DestroyFixture(fixture);fixtureDef.friction=v;fixture=body->CreateFixture(&fixtureDef);};
-        inline void SetElasticity(float e=0.5){body->DestroyFixture(fixture);fixtureDef.restitution=e;fixture=body->CreateFixture(&fixtureDef);};
-        inline void SetRotation(float angle){body->SetTransform(body->GetPosition(),toRad(angle));shape->SetRotation(angle);}
-        void DistanceJoinWith(Body& other,float hz=0);
+        //redefinition
+        void SetPosition(float X,float Y){bodyDef.position.Set(toMet(X),-toMet(Y)); shape->SetPosition(sf::Vector2f(X,Y));}
+        void SetRotation(float angle){body->SetTransform(body->GetPosition(),toRad(angle));shape->SetRotation(angle);}
 
-        void SetColor(sf::Color couleur);
+        ///new
+        inline void SetColor(sf::Color couleur){shape->SetFillColor(couleur);};
+        inline void Draw(sf::RenderTarget& window){window.Draw(*shape);};
 
+        void Next();
 
-    //protected:
-        static b2BodyDef bodyDef;
-        b2Body* body;
-        b2Shape* b2shape;
-        static b2FixtureDef fixtureDef;
-        b2Fixture* fixture;
+    protected:
         sf::Shape* shape;
-
 };
 
-extern b2World world;
+
 
 #endif

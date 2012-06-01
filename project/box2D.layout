@@ -2,10 +2,10 @@
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Debug" />
 	<File name="Circle.cpp" open="0" top="0" tabpos="5">
-		<Cursor position="525" topLine="0" />
+		<Cursor position="526" topLine="0" />
 	</File>
 	<File name="Circle.hpp" open="0" top="0" tabpos="0">
-		<Cursor position="191" topLine="0" />
+		<Cursor position="193" topLine="0" />
 	</File>
 	<File name="Convex.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="410" topLine="0" />
@@ -13,25 +13,37 @@
 	<File name="Convex.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="227" topLine="0" />
 	</File>
+	<File name="NotDrawableBody.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="126" topLine="0" />
+	</File>
+	<File name="NotDrawableBody.hpp" open="0" top="0" tabpos="0">
+		<Cursor position="49" topLine="0" />
+	</File>
+	<File name="NotDrawableCircle.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="56" topLine="0" />
+	</File>
+	<File name="NotDrawableCircle.hpp" open="0" top="0" tabpos="0">
+		<Cursor position="189" topLine="0" />
+	</File>
 	<File name="Rect.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="353" topLine="0" />
 	</File>
-	<File name="SoftCircle.cpp" open="1" top="1" tabpos="3">
-		<Cursor position="2507" topLine="72" />
+	<File name="SoftCircle.cpp" open="1" top="1" tabpos="2">
+		<Cursor position="1490" topLine="31" />
 	</File>
-	<File name="SoftCircle.hpp" open="1" top="0" tabpos="4">
-		<Cursor position="408" topLine="0" />
+	<File name="SoftCircle.hpp" open="0" top="0" tabpos="4">
+		<Cursor position="477" topLine="0" />
 	</File>
-	<File name="body.cpp" open="1" top="0" tabpos="5">
-		<Cursor position="844" topLine="8" />
+	<File name="body.cpp" open="0" top="0" tabpos="5">
+		<Cursor position="465" topLine="0" />
 	</File>
-	<File name="body.hpp" open="1" top="0" tabpos="2">
-		<Cursor position="1090" topLine="3" />
+	<File name="body.hpp" open="0" top="0" tabpos="2">
+		<Cursor position="729" topLine="0" />
 	</File>
 	<File name="convert.h" open="0" top="0" tabpos="0">
 		<Cursor position="146" topLine="0" />
 	</File>
 	<File name="main.cpp" open="1" top="0" tabpos="1">
-		<Cursor position="1505" topLine="62" />
+		<Cursor position="1505" topLine="8" />
 	</File>
 </CodeBlocks_layout_file>

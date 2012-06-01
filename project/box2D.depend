@@ -1067,38 +1067,37 @@
 	<OpenGL/gl.h>
 	<OpenGL/glu.h>
 
-1338357206 source:/media/dev/Projet/git/SFML2---Box2D/project/Circle.cpp
+1338523283 source:/media/dev/Projet/git/SFML2---Box2D/project/Circle.cpp
 	"Circle.hpp"
 
-1338357210 /media/dev/Projet/git/SFML2---Box2D/project/Circle.hpp
+1338523283 /media/dev/Projet/git/SFML2---Box2D/project/Circle.hpp
 	"body.hpp"
 
-1338243494 /media/dev/Projet/git/SFML2---Box2D/project/body.hpp
+1338523737 /media/dev/Projet/git/SFML2---Box2D/project/body.hpp
 	<SFML/Graphics.hpp>
 	<SFML/OpenGL.hpp>
-	<Box2D/Box2D.h>
-	"convert.h"
+	"NotDrawableBody.hpp"
 
-1338257203 /media/dev/Projet/git/SFML2---Box2D/project/convert.h
+1338523283 /media/dev/Projet/git/SFML2---Box2D/project/convert.h
 	<SFML/Graphics.hpp>
 	<Box2D/Box2D.h>
 
-1338071420 source:/media/dev/Projet/git/SFML2---Box2D/project/Convex.cpp
+1338523283 source:/media/dev/Projet/git/SFML2---Box2D/project/Convex.cpp
 	"Convex.hpp"
 
-1336002218 /media/dev/Projet/git/SFML2---Box2D/project/Convex.hpp
+1338523283 /media/dev/Projet/git/SFML2---Box2D/project/Convex.hpp
 	"body.hpp"
 
-1338070602 source:/media/dev/Projet/git/SFML2---Box2D/project/Rect.cpp
+1338523283 source:/media/dev/Projet/git/SFML2---Box2D/project/Rect.cpp
 	"Rect.hpp"
 
-1336002236 /media/dev/Projet/git/SFML2---Box2D/project/Rect.hpp
+1338523283 /media/dev/Projet/git/SFML2---Box2D/project/Rect.hpp
 	"body.hpp"
 
-1338259109 source:/media/dev/Projet/git/SFML2---Box2D/project/body.cpp
+1338523969 source:/media/dev/Projet/git/SFML2---Box2D/project/body.cpp
 	"body.hpp"
 
-1338357311 source:/media/dev/Projet/git/SFML2---Box2D/project/main.cpp
+1338523283 source:/media/dev/Projet/git/SFML2---Box2D/project/main.cpp
 	"Rect.hpp"
 	"Circle.hpp"
 	"Convex.hpp"
@@ -1107,12 +1106,26 @@
 	"math.h"
 	<iostream>
 
-1338358092 /media/dev/Projet/git/SFML2---Box2D/project/SoftCircle.hpp
+1338524500 /media/dev/Projet/git/SFML2---Box2D/project/SoftCircle.hpp
 	"body.hpp"
+	"NotDrawableCircle.hpp"
 
 1338358092 source:/media/dev/Projet/git/SFML2---Box2D/project/SoftCircle.cpp
 	"SoftCircle.hpp"
 	"Circle.hpp"
 	"math.h"
 	<SFML/OpenGL.hpp>
+
+1338524257 /media/dev/Projet/git/SFML2---Box2D/project/NotDrawableBody.hpp
+	<Box2D/Box2D.h>
+	"convert.h"
+
+1338524017 source:/media/dev/Projet/git/SFML2---Box2D/project/NotDrawableBody.cpp
+	"NotDrawableBody.hpp"
+
+1338524568 /media/dev/Projet/git/SFML2---Box2D/project/NotDrawableCircle.hpp
+	"NotDrawableBody.hpp"
+
+1338524367 source:/media/dev/Projet/git/SFML2---Box2D/project/NotDrawableCircle.cpp
+	"NotDrawableCircle.hpp"
 

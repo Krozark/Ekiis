@@ -52,6 +52,10 @@
 		<Unit filename="Circle.hpp" />
 		<Unit filename="Convex.cpp" />
 		<Unit filename="Convex.hpp" />
+		<Unit filename="NotDrawableBody.cpp" />
+		<Unit filename="NotDrawableBody.hpp" />
+		<Unit filename="NotDrawableCircle.cpp" />
+		<Unit filename="NotDrawableCircle.hpp" />
 		<Unit filename="Rect.cpp" />
 		<Unit filename="Rect.hpp" />
 		<Unit filename="SoftCircle.cpp" />
