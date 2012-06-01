@@ -4,6 +4,19 @@
 #include "body.hpp"
 #include "NotDrawableCircle.hpp"
 
+/***************************************
+*   Attention avec l'utilisation de
+    cette classe.
+    Le moteur physique n'est pas fait
+    pour gérer les corps mous.
+    Par concéquent, cela coute beaucoup en
+    ressources.
+    Elle est totalement inutile si la
+    duretée est mise à 1
+    Utiliser CircleBody à la place quand
+    cela est possible.
+******************************************/
+
 class SoftCircle : public Body // , Sprite
 {
 
