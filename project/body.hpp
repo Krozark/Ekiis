@@ -18,15 +18,20 @@ class Body : public NotDrawableBody
         void SetRotation(float angle){body->SetTransform(body->GetPosition(),toRad(angle));shape->SetRotation(angle);}
 
         ///new
-        inline void SetColor(sf::Color couleur){shape->SetFillColor(couleur);};
-        virtual void Draw(sf::RenderTarget& window){window.Draw(*shape);};
+        virtual void Draw(sf::RenderTarget& window);
 
-        void Next();
+        inline void SetColor(sf::Color couleur){shape->SetFillColor(couleur);};
+        inline void Next();
 
     protected:
         sf::Shape* shape;
 };
 
-
+void Body::Next()
+{
+     b2Vec2 origine = body->GetPosition();
+     shape->SetPosition(toPix(origine.x),-toPix(origine.y));
+     shape->SetRotation(-toDeg(body->GetAngle()));
+};
 
 #endif

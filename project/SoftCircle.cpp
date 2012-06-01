@@ -117,6 +117,8 @@ SoftCircle::SoftCircle(float posx,float posy,float rayon,float duretee,const uns
 
 void SoftCircle::Draw(sf::RenderTarget& window)
 {
+    Next();
+
     if (texture)
     {
      glBindTexture(GL_TEXTURE_2D, texture);

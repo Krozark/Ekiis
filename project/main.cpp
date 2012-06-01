@@ -107,10 +107,7 @@ int main(int argc, char * argv[])
             {
               Body* body = static_cast<Body*>( b->GetUserData() );
               if ( body != NULL )
-              {
-                    body->Next();
                     body->Draw(app);
-              }
               //continue to next body
               b = b->GetNext();
             }

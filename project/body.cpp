@@ -14,10 +14,8 @@ Body::~Body()
     delete b2shape;
 }
 
-void Body::Next()
+void Body::Draw(sf::RenderTarget& window)
 {
-     b2Vec2 origine = body->GetPosition();
-     shape->SetPosition(toPix(origine.x),-toPix(origine.y));
-     shape->SetRotation(-toDeg(body->GetAngle())); // inutile ici...
-};
-
+    Next();
+    window.Draw(*shape);
+}
