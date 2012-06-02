@@ -3,11 +3,7 @@
 #include  "math.h"
 #include <SFML/OpenGL.hpp>
 
-//#include <iostream>
-
-
 using namespace sf;
-//using namespace std;
 
 SoftCircle::SoftCircle(float posx,float posy,float rayon,float duretee,const unsigned int quality): Body(posx,posy), nb_circles(quality>16?(quality<100?quality:100):16), texture(0)
 {
@@ -95,11 +91,8 @@ SoftCircle::SoftCircle(float posx,float posy,float rayon,float duretee,const uns
                 textcoord[i].y = -(1-tan(angle-3.0*pi/4.0));
             }
 
-            //cout<<float(toDeg(angle))<<"\t|\t"<<"\t"<<textcoord[i].x<<"\t"<<textcoord[i].y<<"\t\t|\t";
             textcoord[i].x = (1 + textcoord[i].x)/2 ;
             textcoord[i].y = (1 + textcoord[i].y)/2;
-
-            //cout<<textcoord[i].x<<"\t"<<textcoord[i].y<<endl;
 
             angle += angleStep;
         }
@@ -154,6 +147,7 @@ void SoftCircle::Draw(sf::RenderTarget& window)
             glVertex3f(toPix(centre.x),-toPix(centre.y), -z);
 
     glEnd();
+    #undef z
 
     if (texture)
         glDisable(GL_TEXTURE_2D);
