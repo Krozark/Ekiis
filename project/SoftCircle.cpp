@@ -121,12 +121,13 @@ void SoftCircle::Draw(sf::RenderTarget& window)
 
     if (texture)
     {
-     glBindTexture(GL_TEXTURE_2D, texture);
-     glEnable(GL_TEXTURE_2D);
+        glClear(GL_DEPTH_BUFFER_BIT);
+        glBindTexture(GL_TEXTURE_2D, texture);
+        glEnable(GL_TEXTURE_2D);
     }
 
     // Bind our texture
-    glClear(GL_DEPTH_BUFFER_BIT);
+
     glColor4f(1.f, 1.f, 1.f, 1.f);
 
     glMatrixMode(GL_MODELVIEW);
@@ -154,8 +155,8 @@ void SoftCircle::Draw(sf::RenderTarget& window)
 
     glEnd();
 
-    glDisable(GL_TEXTURE_2D);
-
+    if (texture)
+        glDisable(GL_TEXTURE_2D);
 };
 
 SoftCircle::~SoftCircle()

@@ -32,10 +32,9 @@ int main(int argc, char * argv[])
 
 
     // Enable Z-buffer read and write
-    glEnable(GL_DEPTH_TEST);
+    //glEnable(GL_DEPTH_TEST);
     glDepthMask(GL_TRUE);
     glClearDepth(1.f);
-    glEnable(GL_TEXTURE_2D);
 
 
     // Setup a perspective projection
@@ -51,33 +50,34 @@ int main(int argc, char * argv[])
     // BOX2D
 
 
-    RectBody* ground[4];
+    vector<Body*> bodys(4);
 
-    ground[0] = new RectBody(0,300,10000,10,b2_staticBody);
-    ground[0]->SetRotation(25);
+    bodys[0] = new RectBody(0,300,10000,10,b2_staticBody);
+    bodys[0]->SetRotation(25);
 
-    ground[1] = new RectBody(300,0,10000,10,b2_staticBody);
-    ground[1]->SetRotation(90);
+    bodys[1] = new RectBody(300,0,10000,10,b2_staticBody);
+    bodys[1]->SetRotation(90);
 
-    ground[2] = new RectBody(0,-3500,10000,10,b2_staticBody);
-    ground[2]->SetRotation(180);
+    bodys[2] = new RectBody(0,-3500,10000,10,b2_staticBody);
+    bodys[2]->SetRotation(180);
 
-    ground[3] = new RectBody(-400,0,10000,10,b2_staticBody);
-    ground[3]->SetRotation(90);
+    bodys[3] = new RectBody(-400,0,10000,10,b2_staticBody);
+    bodys[3]->SetRotation(90);
 
-    //new CircleBody(0,0,15);
      GLuint texture = 0;
     {
         sf::Image image;
         if (!image.LoadFromFile("b.png"))
             exit(1);
+        glEnable(GL_TEXTURE_2D);
         glGenTextures(1, &texture);
         glBindTexture(GL_TEXTURE_2D, texture);
         gluBuild2DMipmaps(GL_TEXTURE_2D, GL_RGBA, image.GetWidth(), image.GetHeight(), GL_RGBA, GL_UNSIGNED_BYTE, image.GetPixelsPtr());
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+        glDisable(GL_TEXTURE_2D);
+
     }
-    //(new SoftCircle(100,-160,30,0.6,32))->SetTexture(texture);
 
     // MAIN LOOP
     while(app.IsOpen())
@@ -92,7 +92,15 @@ int main(int argc, char * argv[])
             else if ((event.Type == sf::Event::MouseButtonPressed) && (event.MouseButton.Button == sf::Mouse::Left)){
                 Vector2i pos = sf::Mouse::GetPosition(app);
                 float nb = (rand()/((double)RAND_MAX))*60+30;
-                (new SoftCircle(pos.x-WIDTH/2,pos.y-HEIGHT/2,nb,0.6,32))->SetTexture(texture);
+                SoftCircle* n = (new SoftCircle(pos.x-WIDTH/2,pos.y-HEIGHT/2,nb,0.5,32));
+                n->SetTexture(texture);
+                bodys.push_back(n);
+            }
+            else if ((event.Type == sf::Event::MouseButtonPressed) && (event.MouseButton.Button == sf::Mouse::Right)){
+                 Vector2i pos = sf::Mouse::GetPosition(app);
+                 float nb = (rand()/((double)RAND_MAX))*60+30;
+                 Body* n= new CircleBody(pos.x-WIDTH/2,pos.y-HEIGHT/2,nb);
+                 bodys.push_back(n);
             }
         }
 
@@ -100,7 +108,7 @@ int main(int argc, char * argv[])
 
         app.Clear();
 
-        {
+        /*{
 
             b2Body* b = world.GetBodyList();//get start of list
             while ( b != NULL )
@@ -111,7 +119,10 @@ int main(int argc, char * argv[])
               //continue to next body
               b = b->GetNext();
             }
-        }
+        }*/
+
+        for (int i =bodys.size()-1;i>=0;--i)
+                bodys[i]->Draw(app);
 
         /*{
             b2Joint* b =world.GetJointList ();
