@@ -26,7 +26,7 @@ SoftCircle::SoftCircle(float posx,float posy,float rayon,float duretee,const uns
     fixtureDef.shape = b2shape;
     fixture=body->CreateFixture(&fixtureDef);
 
-    shape->SetOrigin(radius,radius);
+    shape->setOrigin(radius,radius);
     SetPosition(posx,posy);
     SetColor(Color::Red);
 

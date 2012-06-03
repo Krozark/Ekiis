@@ -28,7 +28,7 @@ int main(int argc, char * argv[])
 
     // SFML
     RenderWindow app(VideoMode(WIDTH, HEIGHT, BPP), "Box2D");
-    app.SetFramerateLimit(fps);
+    app.setFramerateLimit(fps);
 
 
     // Enable Z-buffer read and write
@@ -46,7 +46,7 @@ int main(int argc, char * argv[])
     Vector2f center(0, 0);
     Vector2f halfSize(WIDTH, HEIGHT);
     View view(center, halfSize);
-    app.SetView(view); // centrage de la zone de rendu sur (0;0)
+    app.setView(view); // centrage de la zone de rendu sur (0;0)
     // BOX2D
 
 
@@ -67,12 +67,13 @@ int main(int argc, char * argv[])
      GLuint texture = 0;
     {
         sf::Image image;
-        if (!image.LoadFromFile("b.png"))
+        if (!image.loadFromFile("b.png"))
             exit(1);
         glEnable(GL_TEXTURE_2D);
         glGenTextures(1, &texture);
         glBindTexture(GL_TEXTURE_2D, texture);
-        gluBuild2DMipmaps(GL_TEXTURE_2D, GL_RGBA, image.GetWidth(), image.GetHeight(), GL_RGBA, GL_UNSIGNED_BYTE, image.GetPixelsPtr());
+        Vector2u size = image.getSize();
+        gluBuild2DMipmaps(GL_TEXTURE_2D, GL_RGBA, size.x, size.y, GL_RGBA, GL_UNSIGNED_BYTE, image.getPixelsPtr());
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
         glDisable(GL_TEXTURE_2D);
@@ -80,24 +81,24 @@ int main(int argc, char * argv[])
     }
 
     // MAIN LOOP
-    while(app.IsOpen())
+    while(app.isOpen())
     {
         Event event; // gestion des évenements
-        while(app.PollEvent(event))
+        while(app.pollEvent(event))
         {
-            if(event.Type == sf::Event::Closed)
-                app.Close();
-            else if ((event.Type == sf::Event::KeyPressed) && (event.Key.Code == sf::Keyboard::Escape))
-                app.Close();
-            else if ((event.Type == sf::Event::MouseButtonPressed) && (event.MouseButton.Button == sf::Mouse::Left)){
-                Vector2i pos = sf::Mouse::GetPosition(app);
+            if(event.type == sf::Event::Closed)
+                app.close();
+            else if ((event.type == sf::Event::KeyPressed) && (event.key.code == sf::Keyboard::Escape))
+                app.close();
+            else if ((event.type == sf::Event::MouseButtonPressed) && (event.mouseButton.button == sf::Mouse::Left)){
+                Vector2i pos = sf::Mouse::getPosition(app);
                 float nb = (rand()/((double)RAND_MAX))*60+30;
                 SoftCircle* n = (new SoftCircle(pos.x-WIDTH/2,pos.y-HEIGHT/2,nb,0.5,32));
                 n->SetTexture(texture);
                 bodys.push_back(n);
             }
-            else if ((event.Type == sf::Event::MouseButtonPressed) && (event.MouseButton.Button == sf::Mouse::Right)){
-                 Vector2i pos = sf::Mouse::GetPosition(app);
+            else if ((event.type == sf::Event::MouseButtonPressed) && (event.mouseButton.button == sf::Mouse::Right)){
+                 Vector2i pos = sf::Mouse::getPosition(app);
                  float nb = (rand()/((double)RAND_MAX))*60+30;
                  Body* n= new CircleBody(pos.x-WIDTH/2,pos.y-HEIGHT/2,nb);
                  bodys.push_back(n);
@@ -106,7 +107,7 @@ int main(int argc, char * argv[])
 
         world.Step(timeStep, velocityIter, positionIter); // on calcule la frame suivante
 
-        app.Clear();
+        app.clear();
 
         /*{
 
@@ -148,7 +149,7 @@ int main(int argc, char * argv[])
               b = b->GetNext();
             }
         }*/
-        app.Display();
+        app.display();
     }
     glDeleteTextures(1, &texture);
     return EXIT_SUCCESS;

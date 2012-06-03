@@ -17,7 +17,7 @@ ConvexBody::ConvexBody (float posx,float posy,const Vector2f *vertices,int verte
         vertices_met[j].x = toMet(vertices[i].x);
         vertices_met[j].y = -toMet(vertices[i].y);
 
-        static_cast<ConvexShape*>(shape)->SetPoint(i,Vector2f(vertices[i].x,vertices[i].y));
+        static_cast<ConvexShape*>(shape)->setPoint(i,Vector2f(vertices[i].x,vertices[i].y));
     }
 
     static_cast<b2PolygonShape*>(b2shape)->Set(vertices_met,vertexCount);
@@ -27,11 +27,11 @@ ConvexBody::ConvexBody (float posx,float posy,const Vector2f *vertices,int verte
 
     //set the centre
     b2Vec2 centroid = static_cast<b2PolygonShape*>(b2shape)->m_centroid;
-    shape->SetOrigin(toPix(centroid.x),-toPix(centroid.y));
+    shape->setOrigin(toPix(centroid.x),-toPix(centroid.y));
 
     SetPosition(posx,posy);
 
-    shape->SetFillColor(Color::White);
+    shape->setFillColor(Color::White);
 
 
     /*Texture * text = new Texture();

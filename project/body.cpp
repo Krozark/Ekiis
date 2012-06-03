@@ -17,5 +17,5 @@ Body::~Body()
 void Body::Draw(sf::RenderTarget& window)
 {
     Next();
-    window.Draw(*shape);
+    window.draw(*shape);
 }

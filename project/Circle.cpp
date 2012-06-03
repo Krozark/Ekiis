@@ -12,7 +12,7 @@ CircleBody::CircleBody (float posx,float posy,float rayon,b2BodyType type) : Bod
     fixtureDef.shape = b2shape;
     fixture=body->CreateFixture(&fixtureDef);
 
-    shape->SetOrigin(rayon,rayon);
+    shape->setOrigin(rayon,rayon);
     SetPosition(posx,posy);
 
 }

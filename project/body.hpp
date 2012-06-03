@@ -14,13 +14,13 @@ class Body : public NotDrawableBody
         ~Body();
 
         //redefinition
-        void SetPosition(float X,float Y){bodyDef.position.Set(toMet(X),-toMet(Y)); shape->SetPosition(sf::Vector2f(X,Y));}
-        void SetRotation(float angle){body->SetTransform(body->GetPosition(),toRad(angle));shape->SetRotation(angle);}
+        void SetPosition(float X,float Y){bodyDef.position.Set(toMet(X),-toMet(Y)); shape->setPosition(X,Y);}
+        void SetRotation(float angle){body->SetTransform(body->GetPosition(),toRad(angle));shape->setRotation(angle);}
 
         ///new
         virtual void Draw(sf::RenderTarget& window);
 
-        inline void SetColor(sf::Color couleur){shape->SetFillColor(couleur);};
+        inline void SetColor(sf::Color couleur){shape->setFillColor(couleur);};
         inline void Next();
 
     protected:
@@ -30,8 +30,8 @@ class Body : public NotDrawableBody
 void Body::Next()
 {
      b2Vec2 origine = body->GetPosition();
-     shape->SetPosition(toPix(origine.x),-toPix(origine.y));
-     shape->SetRotation(-toDeg(body->GetAngle()));
+     shape->setPosition(toPix(origine.x),-toPix(origine.y));
+     shape->setRotation(-toDeg(body->GetAngle()));
 };
 
 #endif
