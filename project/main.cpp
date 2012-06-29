@@ -1,10 +1,6 @@
-#include "Rect.hpp"
-#include "Circle.hpp"
-#include "Convex.hpp"
-#include "SoftCircle.hpp"
+#include "bodys.hpp"
 
 #include "convert.h"
-#include  "math.h"
 
 #define WIDTH 1600
 #define HEIGHT 900
@@ -48,7 +44,6 @@ int main(int argc, char * argv[])
     View view(center, halfSize);
     app.setView(view); // centrage de la zone de rendu sur (0;0)
     // BOX2D
-
 
     vector<Body*> bodys(4);
 
@@ -109,46 +104,9 @@ int main(int argc, char * argv[])
 
         app.clear();
 
-        /*{
-
-            b2Body* b = world.GetBodyList();//get start of list
-            while ( b != NULL )
-            {
-              Body* body = static_cast<Body*>( b->GetUserData() );
-              if ( body != NULL )
-                    body->Draw(app);
-              //continue to next body
-              b = b->GetNext();
-            }
-        }*/
-
         for (int i =bodys.size()-1;i>=0;--i)
                 bodys[i]->Draw(app);
 
-        /*{
-            b2Joint* b =world.GetJointList ();
-            while ( b != NULL )
-            {
-
-              Vector2f A(toPix(b->GetAnchorA ().x),toPix(-b->GetAnchorA ().y));
-              Vector2f B(toPix(b->GetAnchorB ().x),toPix(-b->GetAnchorB ().y));
-
-              ConvexShape s(4);
-
-              s.SetPoint(0,A);
-              s.SetPoint(1,B);
-              s.SetPoint(2,B);
-              s.SetPoint(3,A);
-
-              s.SetOutlineColor(Color::Yellow);
-              s.SetOutlineThickness(0.2);
-
-              app.Draw(s);
-
-              //continue to next body
-              b = b->GetNext();
-            }
-        }*/
         app.display();
     }
     glDeleteTextures(1, &texture);

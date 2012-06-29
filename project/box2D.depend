@@ -1117,13 +1117,9 @@
 1338697873 source:/media/dev/Projet/git/SFML2---Box2D/project/body.cpp
 	"body.hpp"
 
-1338670069 source:/media/dev/Projet/git/SFML2---Box2D/project/main.cpp
-	"Rect.hpp"
-	"Circle.hpp"
-	"Convex.hpp"
-	"SoftCircle.hpp"
+1340929594 source:/media/dev/Projet/git/SFML2---Box2D/project/main.cpp
+	"bodys.hpp"
 	"convert.h"
-	"math.h"
 	<iostream>
 
 1338610435 /media/dev/Projet/git/SFML2---Box2D/project/SoftCircle.hpp
@@ -1160,4 +1156,20 @@
 
 1338695340 /usr/local/include//SFML/Graphics/Export.hpp
 	<SFML/Config.hpp>
+
+1340929031 source:/media/dev/Projet/git/SFML2---Box2D/project/Entity.cpp
+	"Entity.hpp"
+
+1340932051 /media/dev/Projet/git/SFML2---Box2D/project/Entity.hpp
+	"body.hpp"
+
+1340932057 /media/dev/Projet/git/SFML2---Box2D/project/bodys.hpp
+	"body.hpp"
+	"NotDrawableBody.hpp"
+	"NotDrawableCircle.hpp"
+	"Rect.hpp"
+	"Circle.hpp"
+	"Convex.hpp"
+	"SoftCircle.hpp"
+	"Entity.hpp"
 

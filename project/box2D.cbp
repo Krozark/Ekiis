@@ -12,6 +12,8 @@
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
+					<Add option="-fexpensive-optimizations" />
+					<Add option="-O3" />
 					<Add option="-g" />
 					<Add directory="/usr/local/include/" />
 				</Compiler>
@@ -52,6 +54,8 @@
 		<Unit filename="Circle.hpp" />
 		<Unit filename="Convex.cpp" />
 		<Unit filename="Convex.hpp" />
+		<Unit filename="Entity.cpp" />
+		<Unit filename="Entity.hpp" />
 		<Unit filename="NotDrawableBody.cpp" />
 		<Unit filename="NotDrawableBody.hpp" />
 		<Unit filename="NotDrawableCircle.cpp" />
@@ -62,6 +66,7 @@
 		<Unit filename="SoftCircle.hpp" />
 		<Unit filename="body.cpp" />
 		<Unit filename="body.hpp" />
+		<Unit filename="bodys.hpp" />
 		<Unit filename="convert.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
