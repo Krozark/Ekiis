@@ -29,6 +29,13 @@ MainWindow::MainWindow(const sf::VideoMode mode, const std::string &title,const 
     addCloseEvent();
 };
 
+MainWindow::~MainWindow()
+{
+    int size = events.size();
+    for (int i=0;i<size;++i)
+        delete events[i];
+};
+
 void MainWindow::addCloseEvent()
 {
     BaseEventCallable* ev;

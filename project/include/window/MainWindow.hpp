@@ -8,6 +8,7 @@ class MainWindow : public sf::RenderWindow
 {
     public:
         MainWindow(const sf::VideoMode mode, const std::string &title,const unsigned int max_fps=60);
+        ~MainWindow();
 
         inline void addEvent(BaseEventCallable* ev){events.push_back(ev);};
 

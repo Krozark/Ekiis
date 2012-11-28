@@ -9,10 +9,10 @@ Body::Body (float posx,float posy,b2BodyType type) : NotDrawableBody(posx,posy,t
     body->SetUserData( this );
 };
 
-Body::~Body()
+/*Body::~Body()
 {
-    delete b2shape;
-}
+    //delete b2shape;
+}*/
 
 void Body::Draw(sf::RenderTarget& window)
 {

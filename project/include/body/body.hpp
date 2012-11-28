@@ -12,7 +12,7 @@ class Body : public NotDrawableBody
 {
     public:
         Body (float posx,float posy,b2BodyType type = b2_dynamicBody);
-        ~Body();
+        //~Body();
 
         //redefinition
         void SetPosition(float X,float Y){bodyDef.position.Set(toMet(X),-toMet(Y)); shape->setPosition(X,Y);}

@@ -98,5 +98,9 @@ int main(int argc, char * argv[])
         app.display();
     }
     glDeleteTextures(1, &texture);
+
+    for(unsigned int i=0; i<bodys.size();++i)
+        delete bodys[i];
+
     return EXIT_SUCCESS;
 }

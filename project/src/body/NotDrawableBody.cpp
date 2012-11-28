@@ -17,8 +17,8 @@ NotDrawableBody::NotDrawableBody(float posx,float posy,b2BodyType type)
 NotDrawableBody::~NotDrawableBody()
 {
     world.DestroyBody(body);
-    delete b2shape;
-    delete fixture;
+    //delete b2shape;
+    //delete fixture;
 };
 
 void NotDrawableBody::DistanceJoinWith(NotDrawableBody& other,float hz)
