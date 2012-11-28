@@ -2,18 +2,10 @@
 
 #include <SFML/OpenGL.hpp>
 
-#include "EventExecutable.hpp"
-#include "EventObject.hpp"
+#include "EventManager.hpp"
 
 
 using namespace sf;
-
-/*************************************  CALLBACKS *************************************************/
-static void closeCallBack(const sf::Event& event,void* data) {
-    static_cast<sf::Window*>(data)->close();
-};
-
-/**************************************************************************************************/
 
 MainWindow::MainWindow(const sf::VideoMode mode, const std::string &title,const unsigned int fps) : RenderWindow(mode,title)
 {
@@ -42,10 +34,10 @@ void MainWindow::addCloseEvent()
 {
     BaseEventCallable* ev;
     //ev= new EventExecutable(closeCallBack,this,sf::Event::Closed);
-    ev = new EventObject<MainWindow>(this,&MainWindow::close,sf::Event::Closed);
+    ev = EventManager::createEvent<MainWindow>(this,&MainWindow::close,sf::Event::Closed);
     events.push_back(ev);
 
-    ev = new EventExecutable(closeCallBack,this,sf::Event::KeyPressed,sf::Keyboard::Escape);
+    ev = EventManager::createEvent<MainWindow>(this,&MainWindow::close,sf::Event::KeyPressed,sf::Keyboard::Escape);
     events.push_back(ev);
 };
 

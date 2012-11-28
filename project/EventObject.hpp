@@ -6,13 +6,15 @@
 template<typename T>
 class EventObject : public BaseEventCallable
 {
-    typedef void (T::*FunctionType)();
+
     public:
-       /* EventObject(T* obj,FunctionType methode,const sf::Event& ev): BaseEventCallable(ev)
+        typedef void (T::*FunctionType)();
+
+        EventObject(T* obj,FunctionType methode,const sf::Event& ev): BaseEventCallable(ev)
         {
             this->obj = obj;
             this->callback = methode;
-        };*/
+        };
 
         EventObject(T* obj,FunctionType methode,const sf::Event::EventType &evtType)  : BaseEventCallable(evtType)
         {
@@ -20,13 +22,13 @@ class EventObject : public BaseEventCallable
             this->callback = methode;
         };
 
-        /*EventObject(T* obj,FunctionType methode,const sf::Event::EventType &evtType,const sf::Mouse::Button button) : BaseEventCallable(evtType,button)
+        EventObject(T* obj,FunctionType methode,const sf::Event::EventType &evtType,const sf::Mouse::Button button) : BaseEventCallable(evtType,button)
         {
             this->obj = obj;
             this->callback = methode;
         };
 
-        EventObject(T* obj,FunctionType methode,const sf::Event::EventType &evtType,const sf::Keyboard::Key code=false, bool alt=false, bool ctlr=false, bool shift=false, bool system=false) : BaseEventCallable(evtType,code,alt,ctlr,shift,system)
+        EventObject(T* obj,FunctionType methode,const sf::Event::EventType &evtType,const sf::Keyboard::Key code, bool alt=false, bool ctlr=false, bool shift=false, bool system=false) : BaseEventCallable(evtType,code,alt,ctlr,shift,system)
         {
             this->obj = obj;
             this->callback = methode;
@@ -36,7 +38,7 @@ class EventObject : public BaseEventCallable
         {
             this->obj = obj;
             this->callback = methode;
-        };*/
+        };
 
         virtual void execute(const sf::Event& ev){(obj->*callback)();};
 

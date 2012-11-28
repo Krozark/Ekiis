@@ -50,12 +50,19 @@
 			<Add library="sfml-system" />
 			<Add library="sfml-window" />
 		</Linker>
+		<Unit filename="BaseEventCallable.cpp" />
+		<Unit filename="BaseEventCallable.hpp" />
 		<Unit filename="Circle.cpp" />
 		<Unit filename="Circle.hpp" />
 		<Unit filename="Convex.cpp" />
 		<Unit filename="Convex.hpp" />
 		<Unit filename="Entity.cpp" />
 		<Unit filename="Entity.hpp" />
+		<Unit filename="EventExecutable.hpp" />
+		<Unit filename="EventObject.hpp" />
+		<Unit filename="EventObjectParam.hpp" />
+		<Unit filename="MainWindow.cpp" />
+		<Unit filename="MainWindow.hpp" />
 		<Unit filename="NotDrawableBody.cpp" />
 		<Unit filename="NotDrawableBody.hpp" />
 		<Unit filename="NotDrawableCircle.cpp" />
