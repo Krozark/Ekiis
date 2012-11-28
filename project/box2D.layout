@@ -13,7 +13,7 @@
 	<File name="Convex.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="227" topLine="0" />
 	</File>
-	<File name="Entity.cpp" open="1" top="0" tabpos="3">
+	<File name="Entity.cpp" open="1" top="1" tabpos="3">
 		<Cursor position="11" topLine="0" />
 	</File>
 	<File name="Entity.hpp" open="1" top="0" tabpos="2">
@@ -32,10 +32,10 @@
 		<Cursor position="34" topLine="0" />
 	</File>
 	<File name="SoftCircle.cpp" open="0" top="0" tabpos="2">
-		<Cursor position="4581" topLine="126" />
+		<Cursor position="1097" topLine="93" />
 	</File>
 	<File name="SoftCircle.hpp" open="0" top="0" tabpos="3">
-		<Cursor position="363" topLine="7" />
+		<Cursor position="363" topLine="0" />
 	</File>
 	<File name="body.cpp" open="0" top="0" tabpos="8">
 		<Cursor position="42" topLine="0" />
@@ -43,13 +43,13 @@
 	<File name="body.hpp" open="0" top="0" tabpos="4">
 		<Cursor position="295" topLine="0" />
 	</File>
-	<File name="bodys.hpp" open="1" top="0" tabpos="4">
+	<File name="bodys.hpp" open="0" top="0" tabpos="4">
 		<Cursor position="199" topLine="0" />
 	</File>
 	<File name="convert.h" open="0" top="0" tabpos="0">
 		<Cursor position="146" topLine="0" />
 	</File>
-	<File name="main.cpp" open="1" top="1" tabpos="1">
-		<Cursor position="2334" topLine="77" />
+	<File name="main.cpp" open="1" top="0" tabpos="1">
+		<Cursor position="1430" topLine="65" />
 	</File>
 </CodeBlocks_layout_file>

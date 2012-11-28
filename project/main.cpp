@@ -7,12 +7,38 @@
 #define BPP 32
 
 #include <iostream>
+#include "MainWindow.hpp"
 
 using namespace std;
 using namespace sf;
 //extern world
 b2World world(b2Vec2(0,-9.8f));
 
+vector<Body*> bodys(4);
+GLuint texture = 0;
+
+/*static void addSoftCircleCallBack(MainWindow& w, const sf::Event& event)
+{
+    float nb = (rand()/((double)RAND_MAX))*60+30;
+    SoftCircle* n = (new SoftCircle(event.mouseButton.x-WIDTH/2,event.mouseButton.y-HEIGHT/2,nb,0.5,32));
+    n->SetTexture(texture);
+    bodys.push_back(n);
+};
+
+static void addCircleCallBack(MainWindow& w, const sf::Event& event)
+{
+     float nb = (rand()/((double)RAND_MAX))*60+30;
+     Body* n= new CircleBody(event.mouseButton.x-WIDTH/2,event.mouseButton.y-HEIGHT/2,nb);
+     bodys.push_back(n);
+};
+
+static void addEntityCallBack(MainWindow& w, const sf::Event& event)
+{
+    Vector2i pos = sf::Mouse::getPosition(w);
+    Body* n =new Entity(pos.x-WIDTH/2,pos.y-HEIGHT/2);
+    bodys.push_back(n);
+};
+*/
 int main(int argc, char * argv[])
 {
     // VARS
@@ -23,29 +49,13 @@ int main(int argc, char * argv[])
     const int32 positionIter = 3;
 
     // SFML
-    RenderWindow app(VideoMode(WIDTH, HEIGHT, BPP), "Box2D");
-    app.setFramerateLimit(fps);
+    MainWindow app(VideoMode(WIDTH, HEIGHT, BPP), "Box2D",60);
+/*    app.addEvent(addSoftCircleCallBack,sf::Event::MouseButtonPressed,sf::Mouse::Left);
+    app.addEvent(addCircleCallBack,sf::Event::MouseButtonPressed,sf::Mouse::Right);
+    app.addEvent(addEntityCallBack,sf::Event::KeyPressed,sf::Keyboard::Space);*/
 
 
-    // Enable Z-buffer read and write
-    //glEnable(GL_DEPTH_TEST);
-    glDepthMask(GL_TRUE);
-    glClearDepth(1.f);
-
-
-    // Setup a perspective projection
-    glMatrixMode(GL_PROJECTION);
-    glLoadIdentity();
-    //gluPerspective(90.f, 1.f, 1.f, 500.f);
-
-
-    Vector2f center(0, 0);
-    Vector2f halfSize(WIDTH, HEIGHT);
-    View view(center, halfSize);
-    app.setView(view); // centrage de la zone de rendu sur (0;0)
     // BOX2D
-
-    vector<Body*> bodys(4);
 
     bodys[0] = new RectBody(0,300,10000,10,b2_staticBody);
     bodys[0]->SetRotation(25);
@@ -59,7 +69,7 @@ int main(int argc, char * argv[])
     bodys[3] = new RectBody(-400,0,10000,10,b2_staticBody);
     bodys[3]->SetRotation(90);
 
-     GLuint texture = 0;
+
     {
         sf::Image image;
         if (!image.loadFromFile("b.png"))
@@ -78,27 +88,7 @@ int main(int argc, char * argv[])
     // MAIN LOOP
     while(app.isOpen())
     {
-        Event event; // gestion des évenements
-        while(app.pollEvent(event))
-        {
-            if(event.type == sf::Event::Closed)
-                app.close();
-            else if ((event.type == sf::Event::KeyPressed) && (event.key.code == sf::Keyboard::Escape))
-                app.close();
-            else if ((event.type == sf::Event::MouseButtonPressed) && (event.mouseButton.button == sf::Mouse::Left)){
-                Vector2i pos = sf::Mouse::getPosition(app);
-                float nb = (rand()/((double)RAND_MAX))*60+30;
-                SoftCircle* n = (new SoftCircle(pos.x-WIDTH/2,pos.y-HEIGHT/2,nb,0.5,32));
-                n->SetTexture(texture);
-                bodys.push_back(n);
-            }
-            else if ((event.type == sf::Event::MouseButtonPressed) && (event.mouseButton.button == sf::Mouse::Right)){
-                 Vector2i pos = sf::Mouse::getPosition(app);
-                 float nb = (rand()/((double)RAND_MAX))*60+30;
-                 Body* n= new CircleBody(pos.x-WIDTH/2,pos.y-HEIGHT/2,nb);
-                 bodys.push_back(n);
-            }
-        }
+        app.doEvents();
 
         world.Step(timeStep, velocityIter, positionIter); // on calcule la frame suivante
 

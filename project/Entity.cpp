@@ -14,5 +14,5 @@ Entity::Entity (float posx,float posy) : Body(posx,posy,b2_dynamicBody)
     shape->setOrigin(50/2,50/2);
     SetPosition(posx,posy);
 
-    shape->setFillColor(Color::Blue);
+    shape->setFillColor(Color::Green);
 };

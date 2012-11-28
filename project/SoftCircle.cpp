@@ -28,7 +28,7 @@ SoftCircle::SoftCircle(float posx,float posy,float rayon,float duretee,const uns
 
     shape->setOrigin(radius,radius);
     SetPosition(posx,posy);
-    SetColor(Color::Red);
+    //SetColor(Color::Red);
 
     /// create the other
     bodys = new NotDrawableCircleBody*[nb_circles];
