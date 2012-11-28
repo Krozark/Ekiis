@@ -30,9 +30,9 @@ static void addCircleCallBack(const sf::Event& event)
      bodys.push_back(n);
 };
 
-static void addEntityCallBack(const sf::Event& event,void* data)
+static void addEntityCallBack(const sf::Event& event,sf::Window& data)
 {
-    Vector2i pos = sf::Mouse::getPosition(*static_cast<sf::Window*>(data));
+    Vector2i pos = sf::Mouse::getPosition(data);
     Body* n =new Entity(pos.x-WIDTH/2,pos.y-HEIGHT/2);
     bodys.push_back(n);
 };
@@ -50,7 +50,7 @@ int main(int argc, char * argv[])
     MainWindow app(VideoMode(WIDTH, HEIGHT, BPP), "Box2D",60);
     app.addEvent(EventManager::createEvent(addSoftCircleCallBack,sf::Event::MouseButtonPressed,sf::Mouse::Left));
     app.addEvent(EventManager::createEvent(addCircleCallBack,sf::Event::MouseButtonPressed,sf::Mouse::Right));
-    app.addEvent(EventManager::createEvent(addEntityCallBack,&app,sf::Event::KeyPressed,sf::Keyboard::Space));
+    app.addEvent(EventManager::createEvent<sf::Window>(addEntityCallBack,app,sf::Event::KeyPressed,sf::Keyboard::Space));
 
 
     // BOX2D

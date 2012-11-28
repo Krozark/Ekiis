@@ -2,47 +2,42 @@
 #define EVENTCALLBACKPARAM2_HPP
 
 #include "BaseEventCallable.hpp"
-
+template <typename T>
 class EventCallbackParam2 : public BaseEventCallable
 {
     public:
-        typedef void (*FunctionType)(const sf::Event& event,void* data);
+        typedef void (*FunctionType)(const sf::Event& event,T& data);
 
-        EventCallbackParam2(FunctionType call,void* data,const sf::Event &ev) : BaseEventCallable(ev)
+        EventCallbackParam2(FunctionType call,T& data,const sf::Event &ev) : BaseEventCallable(ev), data(data)
         {
             callback = call;
-            this->data = data;
         };
 
-        EventCallbackParam2(FunctionType call,void* data,const sf::Event::EventType &evtType) : BaseEventCallable(evtType)
+        EventCallbackParam2(FunctionType call,T& data,const sf::Event::EventType &evtType) : BaseEventCallable(evtType), data(data)
         {
             callback = call;
-            this->data = data;
         };
 
-        EventCallbackParam2(FunctionType call,void* data,const sf::Event::EventType &evtType,const sf::Mouse::Button button) : BaseEventCallable(evtType,button)
+        EventCallbackParam2(FunctionType call,T& data,const sf::Event::EventType &evtType,const sf::Mouse::Button button) : BaseEventCallable(evtType,button), data(data)
         {
             callback = call;
-            this->data = data;
         };
 
-        EventCallbackParam2(FunctionType call,void* data,const sf::Event::EventType &evtType,const sf::Keyboard::Key code, bool alt=false, bool ctlr = false, bool shift = false, bool system = false) : BaseEventCallable(evtType,code,alt,ctlr,shift,system)
+        EventCallbackParam2(FunctionType call,T& data,const sf::Event::EventType &evtType,const sf::Keyboard::Key code, bool alt=false, bool ctlr = false, bool shift = false, bool system = false) : BaseEventCallable(evtType,code,alt,ctlr,shift,system), data(data)
         {
             callback = call;
-            this->data = data;
         };
 
-        EventCallbackParam2(FunctionType call,void* data,const sf::Event::EventType &evtType,const int joyId, const int button) : BaseEventCallable(evtType,joyId,button)
+        EventCallbackParam2(FunctionType call,T& data,const sf::Event::EventType &evtType,const int joyId, const int button) : BaseEventCallable(evtType,joyId,button), data(data)
         {
             callback = call;
-            this->data = data;
         };
 
         virtual void execute(const sf::Event& ev){callback(ev,data);};
 
     private:
         FunctionType callback;
-        void* data;
+        T& data;
 };
 
 #endif
