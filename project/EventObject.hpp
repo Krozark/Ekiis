@@ -6,7 +6,7 @@
 template<typename T>
 class EventObject : public BaseEventCallable
 {
-    typedef void (T::*FunctionType)(/*sf::Event& event*/);
+    typedef void (T::*FunctionType)();
     public:
        /* EventObject(T* obj,FunctionType methode,const sf::Event& ev): BaseEventCallable(ev)
         {
