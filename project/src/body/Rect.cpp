@@ -1,4 +1,4 @@
-#include "Rect.hpp"
+#include "body/Rect.hpp"
 
 using namespace sf;
 

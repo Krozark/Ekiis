@@ -1,6 +1,6 @@
-#include "SoftCircle.hpp"
-#include "Circle.hpp"
-#include  "math.h"
+#include "body/SoftCircle.hpp"
+#include "body/Circle.hpp"
+#include  <math.h>
 #include <SFML/OpenGL.hpp>
 
 using namespace sf;

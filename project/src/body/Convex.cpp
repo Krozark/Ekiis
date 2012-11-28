@@ -1,4 +1,4 @@
-#include "Convex.hpp"
+#include "body/Convex.hpp"
 
 using namespace sf;
 

@@ -1,8 +1,7 @@
-#include "MainWindow.hpp"
-
 #include <SFML/OpenGL.hpp>
 
-#include "EventManager.hpp"
+#include "window/MainWindow.hpp"
+#include "event/EventManager.hpp"
 
 
 using namespace sf;

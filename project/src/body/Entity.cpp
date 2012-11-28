@@ -1,4 +1,4 @@
-#include "Entity.hpp"
+#include "body/Entity.hpp"
 
 using namespace sf;
 

@@ -1,8 +1,9 @@
 #ifndef BODY_HPP
 #define BODY_HPP
 
-#include <SFML/Graphics.hpp>
 #include <SFML/OpenGL.hpp>
+#include <SFML/Graphics.hpp>
+
 
 #include "NotDrawableBody.hpp"
 

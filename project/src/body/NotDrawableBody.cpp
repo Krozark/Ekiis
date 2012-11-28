@@ -1,4 +1,4 @@
-#include "NotDrawableBody.hpp"
+#include "body/NotDrawableBody.hpp"
 
 b2BodyDef NotDrawableBody::bodyDef;
 b2FixtureDef NotDrawableBody::fixtureDef;

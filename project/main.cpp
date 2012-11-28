@@ -1,13 +1,11 @@
-#include "bodys.hpp"
-
-#include "convert.h"
+#include "body.hpp"
 
 #define WIDTH 1600
 #define HEIGHT 900
 #define BPP 32
 
 #include <iostream>
-#include "MainWindow.hpp"
+#include "window.hpp"
 
 using namespace std;
 using namespace sf;
