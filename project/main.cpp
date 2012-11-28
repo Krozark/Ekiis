@@ -1,11 +1,11 @@
-#include "body.hpp"
-
 #define WIDTH 1600
 #define HEIGHT 900
 #define BPP 32
 
 #include <iostream>
 #include "window.hpp"
+#include "body.hpp"
+#include "event/EventManager.hpp"
 
 using namespace std;
 using namespace sf;
@@ -15,7 +15,7 @@ b2World world(b2Vec2(0,-9.8f));
 vector<Body*> bodys(4);
 GLuint texture = 0;
 
-/*static void addSoftCircleCallBack(MainWindow& w, const sf::Event& event)
+static void addSoftCircleCallBack(const sf::Event& event)
 {
     float nb = (rand()/((double)RAND_MAX))*60+30;
     SoftCircle* n = (new SoftCircle(event.mouseButton.x-WIDTH/2,event.mouseButton.y-HEIGHT/2,nb,0.5,32));
@@ -23,20 +23,20 @@ GLuint texture = 0;
     bodys.push_back(n);
 };
 
-static void addCircleCallBack(MainWindow& w, const sf::Event& event)
+static void addCircleCallBack(const sf::Event& event)
 {
      float nb = (rand()/((double)RAND_MAX))*60+30;
      Body* n= new CircleBody(event.mouseButton.x-WIDTH/2,event.mouseButton.y-HEIGHT/2,nb);
      bodys.push_back(n);
 };
 
-static void addEntityCallBack(MainWindow& w, const sf::Event& event)
+static void addEntityCallBack(const sf::Event& event,void* data)
 {
-    Vector2i pos = sf::Mouse::getPosition(w);
+    Vector2i pos = sf::Mouse::getPosition(*static_cast<sf::Window*>(data));
     Body* n =new Entity(pos.x-WIDTH/2,pos.y-HEIGHT/2);
     bodys.push_back(n);
 };
-*/
+
 int main(int argc, char * argv[])
 {
     // VARS
@@ -48,9 +48,9 @@ int main(int argc, char * argv[])
 
     // SFML
     MainWindow app(VideoMode(WIDTH, HEIGHT, BPP), "Box2D",60);
-/*    app.addEvent(addSoftCircleCallBack,sf::Event::MouseButtonPressed,sf::Mouse::Left);
-    app.addEvent(addCircleCallBack,sf::Event::MouseButtonPressed,sf::Mouse::Right);
-    app.addEvent(addEntityCallBack,sf::Event::KeyPressed,sf::Keyboard::Space);*/
+    app.addEvent(EventManager::createEvent(addSoftCircleCallBack,sf::Event::MouseButtonPressed,sf::Mouse::Left));
+    app.addEvent(EventManager::createEvent(addCircleCallBack,sf::Event::MouseButtonPressed,sf::Mouse::Right));
+    app.addEvent(EventManager::createEvent(addEntityCallBack,&app,sf::Event::KeyPressed,sf::Keyboard::Space));
 
 
     // BOX2D
