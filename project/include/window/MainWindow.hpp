@@ -13,10 +13,14 @@ class MainWindow : public sf::RenderWindow
         inline void addEvent(BaseEventCallable* ev){events.push_back(ev);};
 
         void addCloseEvent();
+        void resizeSlot(const sf::Event& ev);
+        void moveView(float x,float y);
         void doEvents();
 
     private:
         std::vector<BaseEventCallable*> events;
+        sf::Clock LoopClock;
+        int elapsedTime;
 };
 
 #endif
