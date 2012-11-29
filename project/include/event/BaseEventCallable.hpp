@@ -2,13 +2,13 @@
 #define BASEEVENTCALLABLE_HPP
 
 #include <SFML/Window/Event.hpp>
-
+/*
 #define GCC_VERSION (__GNUC__ * 10000 \
                    + __GNUC_MINOR__ * 100 \
                    + __GNUC_PATCHLEVEL__)
 
 #if GCC_VERSION < 40700
-
+*/
 // ------------- UTILITY---------------
 template<int...> struct index_tuple{};
 
@@ -54,7 +54,7 @@ Ret apply(Ret (*pf)(Args...),T...t, tuple<Args...>&&  tup)
 {
     return apply_helper(pf,t..., typename make_indexes<Args...>::type(), forward<tuple<Args...>>(tup));
 }
-
+/*
 #else
 
 
@@ -98,7 +98,7 @@ inline auto apply(F && f, T && t)
     >::value>::apply(f, ::std::forward<T>(t));
 }
 #endif
-
+*/
 class MainWindow;
 
 class BaseEventCallable
