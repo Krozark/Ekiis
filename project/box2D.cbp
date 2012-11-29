@@ -14,8 +14,10 @@
 				<Compiler>
 					<Add option="-fexpensive-optimizations" />
 					<Add option="-O3" />
+					<Add option="-std=c++0x" />
 					<Add option="-g" />
 					<Add directory="/usr/local/include/" />
+					<Add directory="include" />
 				</Compiler>
 				<Linker>
 					<Add option="-lBox2D" />
@@ -50,24 +52,26 @@
 			<Add library="sfml-system" />
 			<Add library="sfml-window" />
 		</Linker>
-		<Unit filename="header/Events.hpp" />
-		<Unit filename="header/body.hpp" />
-		<Unit filename="header/body/Circle.hpp" />
-		<Unit filename="header/body/Convex.hpp" />
-		<Unit filename="header/body/Entity.hpp" />
-		<Unit filename="header/body/NotDrawableBody.hpp" />
-		<Unit filename="header/body/NotDrawableCircle.hpp" />
-		<Unit filename="header/body/Rect.hpp" />
-		<Unit filename="header/body/SoftCircle.hpp" />
-		<Unit filename="header/body/body.hpp" />
-		<Unit filename="header/body/convert.h" />
-		<Unit filename="header/event/BaseEventCallable.hpp" />
-		<Unit filename="header/event/EventExecutable.hpp" />
-		<Unit filename="header/event/EventManager.hpp" />
-		<Unit filename="header/event/EventObject.hpp" />
-		<Unit filename="header/event/EventObjectParam.hpp" />
-		<Unit filename="header/window.hpp" />
-		<Unit filename="header/window/MainWindow.hpp" />
+		<Unit filename="include/body.hpp" />
+		<Unit filename="include/body/Circle.hpp" />
+		<Unit filename="include/body/Convex.hpp" />
+		<Unit filename="include/body/Entity.hpp" />
+		<Unit filename="include/body/NotDrawableBody.hpp" />
+		<Unit filename="include/body/NotDrawableCircle.hpp" />
+		<Unit filename="include/body/Rect.hpp" />
+		<Unit filename="include/body/SoftCircle.hpp" />
+		<Unit filename="include/body/body.hpp" />
+		<Unit filename="include/body/convert.h" />
+		<Unit filename="include/event.hpp" />
+		<Unit filename="include/event/BaseEventCallable.hpp" />
+		<Unit filename="include/event/EventCallback.hpp" />
+		<Unit filename="include/event/EventCallbackParam.hpp" />
+		<Unit filename="include/event/EventCallbackParam2.hpp" />
+		<Unit filename="include/event/EventManager.hpp" />
+		<Unit filename="include/event/EventObject.hpp" />
+		<Unit filename="include/event/EventObjectParam.hpp" />
+		<Unit filename="include/window.hpp" />
+		<Unit filename="include/window/MainWindow.hpp" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/body/Circle.cpp" />
 		<Unit filename="src/body/Convex.cpp" />

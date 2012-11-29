@@ -2,6 +2,7 @@
 #define HEIGHT 900
 #define BPP 32
 
+
 #include <iostream>
 #include "window.hpp"
 #include "body.hpp"
@@ -11,6 +12,7 @@
 using namespace std;
 using namespace sf;
 //extern world
+
 b2World world(b2Vec2(0,-9.8f));
 
 vector<Body*> bodys(4);
@@ -54,6 +56,9 @@ int main(int argc, char * argv[])
     app.addEvent(EventManager::createEvent<sf::RenderWindow>(addSoftCircleCallBack,app,sf::Event::MouseButtonPressed,sf::Mouse::Left));
     app.addEvent(EventManager::createEvent<sf::RenderWindow>(addCircleCallBack,app,sf::Event::MouseButtonPressed,sf::Mouse::Right));
     app.addEvent(EventManager::createEvent<sf::RenderWindow>(addEntityCallBack,app,sf::Event::KeyPressed,sf::Keyboard::Space));
+
+    //auto v = std::bind(addEntityCallBack,std::placeholders::_1,app);
+
 
     // BOX2D
 
@@ -106,3 +111,31 @@ int main(int argc, char * argv[])
 
     return EXIT_SUCCESS;
 }
+
+
+
+
+/*
+// --------------------- TEST ------------------
+void one(int i, double d)
+{
+    std::cout << "function one(" << i << ", " << d << ");\n";
+}
+int two(int i)
+{
+    std::cout << "function two(" << i << ");\n";
+    return i;
+}
+
+int main()
+{
+    std::tuple<int, double> tup(23, 4.5);
+    apply(one, tup);
+
+   apply(two, std::make_tuple(2));
+
+    return 0;
+}
+
+*/
+

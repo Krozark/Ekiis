@@ -4,3 +4,5 @@
 #include "event/EventCallbackParam2.hpp"
 #include "event/EventObject.hpp"
 #include "event/EventObjectParam.hpp"
+
+#include "event/EventCallbackParams.hpp"

@@ -1,79 +1,61 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Debug" />
-	<File name="BaseEventCallable.cpp" open="0" top="0" tabpos="0">
-		<Cursor position="981" topLine="0" />
+	<File name="include/body.hpp" open="0" top="0" tabpos="0">
+		<Cursor position="27" topLine="0" />
 	</File>
-	<File name="BaseEventCallable.hpp" open="0" top="0" tabpos="0">
-		<Cursor position="595" topLine="0" />
+	<File name="include/body/body.hpp" open="0" top="0" tabpos="0">
+		<Cursor position="257" topLine="0" />
 	</File>
-	<File name="Circle.cpp" open="0" top="0" tabpos="5">
-		<Cursor position="475" topLine="0" />
+	<File name="include/event.hpp" open="0" top="0" tabpos="0">
+		<Cursor position="149" topLine="0" />
 	</File>
-	<File name="Circle.hpp" open="0" top="0" tabpos="0">
-		<Cursor position="193" topLine="0" />
+	<File name="include/event/EventCallback.hpp" open="0" top="0" tabpos="0">
+		<Cursor position="106" topLine="0" />
 	</File>
-	<File name="Convex.cpp" open="0" top="0" tabpos="6">
-		<Cursor position="920" topLine="5" />
+	<File name="include/event/EventCallbackParam.hpp" open="0" top="0" tabpos="0">
+		<Cursor position="30" topLine="0" />
 	</File>
-	<File name="Convex.hpp" open="0" top="0" tabpos="0">
-		<Cursor position="227" topLine="0" />
+	<File name="include/event/EventCallbackParam2.hpp" open="0" top="0" tabpos="0">
+		<Cursor position="64" topLine="0" />
 	</File>
-	<File name="Entity.cpp" open="0" top="0" tabpos="3">
-		<Cursor position="456" topLine="0" />
+	<File name="include/event/EventManager.hpp" open="0" top="0" tabpos="0">
+		<Cursor position="4191" topLine="35" />
 	</File>
-	<File name="Entity.hpp" open="0" top="0" tabpos="2">
-		<Cursor position="408" topLine="0" />
+	<File name="include/window/MainWindow.hpp" open="1" top="0" tabpos="2">
+		<Cursor position="632" topLine="0" />
 	</File>
-	<File name="EventExecutable.hpp" open="0" top="0" tabpos="0">
-		<Cursor position="227" topLine="0" />
+	<File name="main.cpp" open="1" top="1" tabpos="1">
+		<Cursor position="5044" topLine="144" />
 	</File>
-	<File name="EventManager.hpp" open="0" top="0" tabpos="0">
-		<Cursor position="3536" topLine="0" />
+	<File name="src/body/Circle.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="15" topLine="0" />
 	</File>
-	<File name="EventObject.hpp" open="0" top="0" tabpos="0">
-		<Cursor position="1302" topLine="0" />
+	<File name="src/body/Convex.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="15" topLine="0" />
 	</File>
-	<File name="EventObjectParam.hpp" open="0" top="0" tabpos="0">
-		<Cursor position="260" topLine="0" />
+	<File name="src/body/Entity.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="15" topLine="0" />
 	</File>
-	<File name="MainWindow.cpp" open="0" top="0" tabpos="0">
-		<Cursor position="1017" topLine="0" />
+	<File name="src/body/NotDrawableBody.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="545" topLine="0" />
 	</File>
-	<File name="MainWindow.hpp" open="0" top="0" tabpos="0">
-		<Cursor position="345" topLine="0" />
+	<File name="src/body/NotDrawableCircle.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="15" topLine="0" />
 	</File>
-	<File name="NotDrawableBody.hpp" open="0" top="0" tabpos="0">
-		<Cursor position="507" topLine="0" />
+	<File name="src/body/Rect.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="15" topLine="0" />
 	</File>
-	<File name="NotDrawableCircle.hpp" open="0" top="0" tabpos="0">
-		<Cursor position="189" topLine="0" />
+	<File name="src/body/SoftCircle.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="76" topLine="0" />
 	</File>
-	<File name="Rect.cpp" open="0" top="0" tabpos="7">
-		<Cursor position="21" topLine="0" />
+	<File name="src/body/body.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="209" topLine="0" />
 	</File>
-	<File name="Rect.hpp" open="0" top="0" tabpos="0">
-		<Cursor position="34" topLine="0" />
+	<File name="src/event/BaseEventCallable.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="16" topLine="0" />
 	</File>
-	<File name="SoftCircle.cpp" open="0" top="0" tabpos="2">
-		<Cursor position="1097" topLine="93" />
-	</File>
-	<File name="SoftCircle.hpp" open="0" top="0" tabpos="3">
-		<Cursor position="363" topLine="0" />
-	</File>
-	<File name="body.cpp" open="0" top="0" tabpos="8">
-		<Cursor position="42" topLine="0" />
-	</File>
-	<File name="body.hpp" open="0" top="0" tabpos="4">
-		<Cursor position="516" topLine="0" />
-	</File>
-	<File name="bodys.hpp" open="0" top="0" tabpos="4">
-		<Cursor position="199" topLine="0" />
-	</File>
-	<File name="convert.h" open="0" top="0" tabpos="0">
-		<Cursor position="37" topLine="0" />
-	</File>
-	<File name="main.cpp" open="0" top="0" tabpos="1">
-		<Cursor position="1011" topLine="58" />
+	<File name="src/window/MainWindow.cpp" open="1" top="0" tabpos="3">
+		<Cursor position="1073" topLine="19" />
 	</File>
 </CodeBlocks_layout_file>
