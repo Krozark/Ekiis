@@ -45,7 +45,8 @@ Pour récupérer l'évent dans la callback, la callback (C / C++)  doit déclare
 parametrer createEvent avec les types des variables / constantes qui sont passées en paramètre :
     createEvent<int,char,Perso>(ma_fonction,42,"char de test",heros,const sf::Event& bind)
 
-Le paramètre const sf::Event& bind peut etre remplacé par:
+Le paramètre const sf::Event& bind peut etre remplacé par::
+
        (const sf::Event& ev);
        (const sf::Event::EventType &evtType);
        (const sf::Event::EventType &evtType,const sf::Mouse::Button button);
