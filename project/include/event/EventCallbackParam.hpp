@@ -3,40 +3,19 @@
 
 #include "BaseEventCallable.hpp"
 
+template<typename ... Args>
 class EventCallbackParam : public BaseEventCallable
 {
     public:
-        typedef void (*FunctionType)(const sf::Event& event);
+        typedef void (*FunctionType)(Args...);
+        template<typename ...T>
+        EventCallbackParam(FunctionType call,Args... args,const T ... t) : BaseEventCallable(t...), params(std::make_tuple(args ...)), callback(call) {};
 
-        EventCallbackParam(FunctionType call,const sf::Event &ev) : BaseEventCallable(ev)
-        {
-            callback = call;
-        };
-
-        EventCallbackParam(FunctionType call,const sf::Event::EventType &evtType) : BaseEventCallable(evtType)
-        {
-            callback = call;
-        };
-
-        EventCallbackParam(FunctionType call,const sf::Event::EventType &evtType,const sf::Mouse::Button button) : BaseEventCallable(evtType,button)
-        {
-            callback = call;
-        };
-
-        EventCallbackParam(FunctionType call,const sf::Event::EventType &evtType,const sf::Keyboard::Key code, bool alt=false, bool ctlr = false, bool shift = false, bool system = false) : BaseEventCallable(evtType,code,alt,ctlr,shift,system)
-        {
-            callback = call;
-        };
-
-        EventCallbackParam(FunctionType call,const sf::Event::EventType &evtType,const int joyId, const int button) : BaseEventCallable(evtType,joyId,button)
-        {
-            callback = call;
-        };
-
-        virtual void execute(const sf::Event& ev){callback(ev);};
+        virtual void execute(const sf::Event& ev){apply(callback,params);};
 
     private:
         FunctionType callback;
+        std::tuple<Args...> params;
 };
 
 #endif

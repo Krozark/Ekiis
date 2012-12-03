@@ -37,23 +37,37 @@ struct make_indexes : make_indexes_impl<0, index_tuple<>, Types...>
 
 using namespace std;
 
-template<class Ret, class... Args, int... Indexes,typename ...T >
-Ret apply_helper( Ret (*pf)(Args...),T... t, index_tuple< Indexes... >, tuple<Args...>&& tup)
+template<class Ret, class... Args, int... Indexes>
+Ret apply_helper( Ret (*pf)(const sf::Event&,Args...),const sf::Event& ev, index_tuple< Indexes... >, tuple<Args...>&& tup)
 {
-    return pf(t...,forward<Args>( get<Indexes>(tup))...);
+    return pf(ev,forward<Args>( get<Indexes>(tup))...);
 }
 
-template<class Ret, class ... Args,typename ...T>
-Ret apply(Ret (*pf)(Args...),T...t, const tuple<Args...>&  tup)
+template<class Ret, class... Args, int... Indexes>
+Ret apply_helper( Ret (*pf)(Args...), index_tuple< Indexes... >, tuple<Args...>&& tup)
 {
-    return apply_helper(pf, t...,typename make_indexes<Args...>::type(), tuple<Args...>(tup));
+    return pf(forward<Args>( get<Indexes>(tup))...);
 }
 
-template<class Ret, class ... Args,typename ...T>
-Ret apply(Ret (*pf)(Args...),T...t, tuple<Args...>&&  tup)
+template<typename Ret,typename ... Args>
+Ret apply(Ret (*pf)(const sf::Event&,Args...),const sf::Event& ev, const tuple<Args...>&  tup)
 {
-    return apply_helper(pf,t..., typename make_indexes<Args...>::type(), forward<tuple<Args...>>(tup));
+    return apply_helper(pf,ev,typename make_indexes<Args...>::type(), tuple<Args...>(tup));
 }
+
+template<typename Ret,typename ... Args>
+Ret apply(Ret (*pf)(Args...), const tuple<Args...>&  tup)
+{
+    return apply_helper(pf,typename make_indexes<Args...>::type(), tuple<Args...>(tup));
+}
+
+/*
+template<class Ret, class ... Args>
+Ret apply(Ret (*pf)(Args...), tuple<Args...>&&  tup)
+{
+    return apply_helper(pf, typename make_indexes<Args...>::type(), forward<tuple<Args...>>(tup));
+}
+*/
 /*
 #else
 
@@ -107,7 +121,7 @@ class BaseEventCallable
         BaseEventCallable(const sf::Event& ev);
         BaseEventCallable(const sf::Event::EventType &evtType);
         BaseEventCallable(const sf::Event::EventType &evtType,const sf::Mouse::Button button);
-        BaseEventCallable(const sf::Event::EventType &evtType,const sf::Keyboard::Key code, bool alt, bool ctlr, bool shift, bool system);
+        BaseEventCallable(const sf::Event::EventType &evtType,const sf::Keyboard::Key code, bool alt=false, bool ctlr=false, bool shift=false, bool system=false);
         BaseEventCallable(const sf::Event::EventType &evtType,const int joyId, const int button);
 
         virtual void execute(const sf::Event& event) = 0;

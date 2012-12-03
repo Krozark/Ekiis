@@ -4,18 +4,18 @@
 #include "BaseEventCallable.hpp"
 
 template<typename ... Args>
-class EventCallbackParamsEvent : public BaseEventCallable
+class EventCallbackParamEvent : public BaseEventCallable
 {
     public:
-        typedef void (*FunctionType)(Args...,const sf::Event&);
+        typedef void (*FunctionType)(const sf::Event&,Args...);
         template<typename ...T>
-        EventCallbackParamsEvent(FunctionType call,Args... args,const T ... t) : BaseEventCallable(t...), params(std::make_tuple(args ...)), callback(call) {};
+        EventCallbackParamEvent(FunctionType call,Args... args,const T ... t) :BaseEventCallable(t...), params(std::make_tuple(args ...)), callback(call) {};
 
         virtual void execute(const sf::Event& ev){apply(callback,ev,params);};
 
     private:
         FunctionType callback;
-        std::tuple<Args...>& params;
+        std::tuple<Args...> params;
 };
 
 #endif

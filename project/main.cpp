@@ -18,6 +18,7 @@ b2World world(b2Vec2(0,-9.8f));
 vector<Body*> bodys(4);
 GLuint texture = 0;
 
+/*
 static void addSoftCircleCallBack(const sf::Event& event,sf::RenderWindow& data)
 {
     Vector2f pos = data.mapPixelToCoords(sf::Vector2i(event.mouseButton.x,event.mouseButton.y));
@@ -27,17 +28,21 @@ static void addSoftCircleCallBack(const sf::Event& event,sf::RenderWindow& data)
     bodys.push_back(n);
 };
 
-static void addCircleCallBack(const sf::Event& event,sf::RenderWindow& data)
+*/
+
+static void addCircleCallBack(const sf::Event& event,sf::RenderWindow* data)
 {
-    Vector2f pos = data.mapPixelToCoords(sf::Vector2i(event.mouseButton.x,event.mouseButton.y));
+    Vector2f pos = data->mapPixelToCoords(sf::Vector2i(event.mouseButton.x,event.mouseButton.y));
     float nb = (rand()/((double)RAND_MAX))*60+30;
     Body* n= new CircleBody(pos.x,pos.y,nb);
     bodys.push_back(n);
 };
 
-static void addEntityCallBack(const sf::Event& event,sf::RenderWindow& data)
+
+static void addEntityCallBack(sf::RenderWindow* data, int a)
 {
-    Vector2f pos = data.mapPixelToCoords(sf::Mouse::getPosition(data));
+    cout<<a<<endl;
+    Vector2f pos = data->mapPixelToCoords(sf::Mouse::getPosition(*data));
     Body* n =new Entity(pos.x,pos.y);
     bodys.push_back(n);
 };
@@ -53,9 +58,9 @@ int main(int argc, char * argv[])
 
     // SFML
     MainWindow app(VideoMode(WIDTH, HEIGHT, BPP), "Box2D",60);
-    app.addEvent(EventManager::createEvent<sf::RenderWindow>(addSoftCircleCallBack,app,sf::Event::MouseButtonPressed,sf::Mouse::Left));
-    app.addEvent(EventManager::createEvent<sf::RenderWindow>(addCircleCallBack,app,sf::Event::MouseButtonPressed,sf::Mouse::Right));
-    app.addEvent(EventManager::createEvent<sf::RenderWindow>(addEntityCallBack,app,sf::Event::KeyPressed,sf::Keyboard::Space));
+    //app.addEvent(EventManager::createEvent<sf::RenderWindow>(addSoftCircleCallBack,app,sf::Event::MouseButtonPressed,sf::Mouse::Left));
+    //app.addEvent(EventManager::createEvent<sf::RenderWindow*>(addCircleCallBack,&app,sf::Event::MouseButtonPressed,sf::Mouse::Right));
+    app.addEvent(EventManager::createEvent<sf::RenderWindow*,int>(addEntityCallBack,&app,5,sf::Event::KeyPressed,sf::Keyboard::Space));
 
     //auto v = std::bind(addEntityCallBack,std::placeholders::_1,app);
 

@@ -39,6 +39,7 @@
 			</Target>
 		</Build>
 		<Compiler>
+			<Add option="-std=c++0x" />
 			<Add option="-Wall" />
 			<Add option="-fpermissive" />
 		</Compiler>
@@ -64,9 +65,8 @@
 		<Unit filename="include/body/convert.h" />
 		<Unit filename="include/event.hpp" />
 		<Unit filename="include/event/BaseEventCallable.hpp" />
-		<Unit filename="include/event/EventCallback.hpp" />
 		<Unit filename="include/event/EventCallbackParam.hpp" />
-		<Unit filename="include/event/EventCallbackParam2.hpp" />
+		<Unit filename="include/event/EventCallbackParamEvent.hpp" />
 		<Unit filename="include/event/EventManager.hpp" />
 		<Unit filename="include/event/EventObject.hpp" />
 		<Unit filename="include/event/EventObjectParam.hpp" />
