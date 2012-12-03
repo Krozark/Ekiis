@@ -55,7 +55,7 @@ int main(int argc, char * argv[])
     MainWindow app(VideoMode(WIDTH, HEIGHT, BPP), "Box2D",60);
     app.addEvent(EventManager::createEvent<sf::RenderWindow*>(addSoftCircleCallBack,&app,sf::Event::MouseButtonPressed,sf::Mouse::Left));
     app.addEvent(EventManager::createEvent<sf::RenderWindow*>(addCircleCallBack,&app,sf::Event::MouseButtonPressed,sf::Mouse::Right));
-    app.addEvent(EventManager::createEvent<sf::RenderWindow>(addEntityCallBack,&app,sf::Event::KeyPressed,sf::Keyboard::Space));
+    app.addEvent(EventManager::createEvent<sf::RenderWindow*>(addEntityCallBack,&app,sf::Event::KeyPressed,sf::Keyboard::Space));
 
 
     // BOX2D
