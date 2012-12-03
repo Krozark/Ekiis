@@ -27,7 +27,7 @@ MainWindow::MainWindow(const sf::VideoMode mode, const std::string &title,const 
     this->setView(view); // centrage de la zone de rendu sur (0;0)
 
     addCloseEvent();
-    //events.push_back(EventManager::createEvent<MainWindow>(this,&MainWindow::resizeSlot,sf::Event::Resized));
+    events.push_back(EventManager::createEvent<MainWindow>(this,&MainWindow::resizeSlot,sf::Event::Resized));
     elapsedTime=0;
 };
 
@@ -40,8 +40,8 @@ MainWindow::~MainWindow()
 
 void MainWindow::addCloseEvent()
 {
-    //events.push_back(EventManager::createEvent<MainWindow>(this,&MainWindow::close,sf::Event::Closed));
-    //events.push_back(EventManager::createEvent<MainWindow>(this,&MainWindow::close,sf::Event::KeyPressed,sf::Keyboard::Escape));
+    events.push_back(EventManager::createEvent<MainWindow>(this,&MainWindow::close,sf::Event::Closed));
+    events.push_back(EventManager::createEvent<MainWindow>(this,&MainWindow::close,sf::Event::KeyPressed,sf::Keyboard::Escape));
 };
 
 void MainWindow::resizeSlot(const sf::Event& event)

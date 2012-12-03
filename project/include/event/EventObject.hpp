@@ -3,48 +3,22 @@
 
 #include "BaseEventCallable.hpp"
 
-template<typename T>
+template<typename C,typename ... Args>
 class EventObject : public BaseEventCallable
 {
 
     public:
-        typedef void (T::*FunctionType)();
+        typedef void (C::*FunctionType)(Args ...);
 
-        EventObject(T* obj,FunctionType methode,const sf::Event& ev): BaseEventCallable(ev)
-        {
-            this->obj = obj;
-            this->callback = methode;
-        };
+        template <typename ... T>
+        EventObject(C* obj,FunctionType methode,Args... args,const T ... t): BaseEventCallable(t ...), params(std::make_tuple(args ...)), obj (obj), callback (methode) {};
 
-        EventObject(T* obj,FunctionType methode,const sf::Event::EventType &evtType)  : BaseEventCallable(evtType)
-        {
-            this->obj = obj;
-            this->callback = methode;
-        };
-
-        EventObject(T* obj,FunctionType methode,const sf::Event::EventType &evtType,const sf::Mouse::Button button) : BaseEventCallable(evtType,button)
-        {
-            this->obj = obj;
-            this->callback = methode;
-        };
-
-        EventObject(T* obj,FunctionType methode,const sf::Event::EventType &evtType,const sf::Keyboard::Key code, bool alt=false, bool ctlr=false, bool shift=false, bool system=false) : BaseEventCallable(evtType,code,alt,ctlr,shift,system)
-        {
-            this->obj = obj;
-            this->callback = methode;
-        };
-
-        EventObject(T* obj,FunctionType methode,const sf::Event::EventType &evtType,const int joyId, const int button) : BaseEventCallable(evtType,joyId,button)
-        {
-            this->obj = obj;
-            this->callback = methode;
-        };
-
-        virtual void execute(const sf::Event& ev){(obj->*callback)();};
+        virtual void execute(const sf::Event& ev){apply(obj,callback,params);};
 
     private:
-        T* obj;
+        C* obj;
         FunctionType callback;
+        std::tuple<Args...> params;
 };
 
 

@@ -6,20 +6,17 @@ using namespace std;
 BaseEventCallable::BaseEventCallable(const sf::Event& ev)
 {
     event = ev;
-    cout<<1<<endl;
 };
 
 BaseEventCallable::BaseEventCallable(const sf::Event::EventType &evtType)
 {
     event.type = evtType;
-    cout<<2<<endl;
 };
 
 BaseEventCallable::BaseEventCallable(const sf::Event::EventType &evtType,const sf::Mouse::Button button)
 {
     event.type = evtType;
     event.mouseButton.button = button;
-    cout<<3<<endl;
 };
 
 BaseEventCallable::BaseEventCallable(const sf::Event::EventType &evtType,const sf::Keyboard::Key code, bool alt, bool ctlr, bool shift, bool system)
@@ -30,7 +27,6 @@ BaseEventCallable::BaseEventCallable(const sf::Event::EventType &evtType,const s
     event.key.control = ctlr;
     event.key.shift = shift;
     event.key.system = system;
-    cout<<4<<endl;
 };
 
 BaseEventCallable::BaseEventCallable(const sf::Event::EventType &evtType,const int joyId, const int button)
@@ -38,7 +34,6 @@ BaseEventCallable::BaseEventCallable(const sf::Event::EventType &evtType,const i
     event.type = evtType;
     event.joystickButton.joystickId = joyId;
     event.joystickButton.button = button;
-    cout<<5<<endl;
 };
 
 bool BaseEventCallable::operator == (const sf::Event& other)const

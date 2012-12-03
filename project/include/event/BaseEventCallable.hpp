@@ -2,13 +2,7 @@
 #define BASEEVENTCALLABLE_HPP
 
 #include <SFML/Window/Event.hpp>
-/*
-#define GCC_VERSION (__GNUC__ * 10000 \
-                   + __GNUC_MINOR__ * 100 \
-                   + __GNUC_PATCHLEVEL__)
 
-#if GCC_VERSION < 40700
-*/
 // ------------- UTILITY---------------
 template<int...> struct index_tuple{};
 
@@ -41,25 +35,55 @@ template<class Ret, class... Args, int... Indexes>
 Ret apply_helper( Ret (*pf)(const sf::Event&,Args...),const sf::Event& ev, index_tuple< Indexes... >, tuple<Args...>&& tup)
 {
     return pf(ev,forward<Args>( get<Indexes>(tup))...);
-}
+};
 
 template<class Ret, class... Args, int... Indexes>
 Ret apply_helper( Ret (*pf)(Args...), index_tuple< Indexes... >, tuple<Args...>&& tup)
 {
     return pf(forward<Args>( get<Indexes>(tup))...);
-}
+};
 
 template<typename Ret,typename ... Args>
 Ret apply(Ret (*pf)(const sf::Event&,Args...),const sf::Event& ev, const tuple<Args...>&  tup)
 {
     return apply_helper(pf,ev,typename make_indexes<Args...>::type(), tuple<Args...>(tup));
-}
+};
 
 template<typename Ret,typename ... Args>
 Ret apply(Ret (*pf)(Args...), const tuple<Args...>&  tup)
 {
     return apply_helper(pf,typename make_indexes<Args...>::type(), tuple<Args...>(tup));
-}
+};
+
+
+/************* obj::methode ****************************/
+
+
+template<class Ret,typename T, class... Args, int... Indexes>
+Ret apply_helper(T* t, Ret (T::*pf)(const sf::Event&,Args...),const sf::Event& ev, index_tuple< Indexes... >, tuple<Args...>&& tup)
+{
+    return (t->*pf)(ev,forward<Args>( get<Indexes>(tup))...);
+};
+
+template<class Ret,typename T, class... Args, int... Indexes>
+Ret apply_helper(T* t, Ret (T::*pf)(Args...), index_tuple< Indexes... >, tuple<Args...>&& tup)
+{
+    return (t->*pf)(forward<Args>( get<Indexes>(tup))...);
+};
+
+template<typename Ret,typename T,typename ... Args>
+Ret apply(T* t,Ret (T::*pf)(const sf::Event&,Args...),const sf::Event& ev, const tuple<Args...>&  tup)
+{
+    return apply_helper(t,pf,ev,typename make_indexes<Args...>::type(), tuple<Args...>(tup));
+};
+
+template<typename Ret,typename T,typename ... Args>
+Ret apply(T* t,Ret (T::*pf)(Args...), const tuple<Args...>&  tup)
+{
+    return apply_helper(t,pf,typename make_indexes<Args...>::type(), tuple<Args...>(tup));
+};
+
+
 
 /*
 template<class Ret, class ... Args>
@@ -68,51 +92,7 @@ Ret apply(Ret (*pf)(Args...), tuple<Args...>&&  tup)
     return apply_helper(pf, typename make_indexes<Args...>::type(), forward<tuple<Args...>>(tup));
 }
 */
-/*
-#else
 
-
-#include <cstddef>
-#include <tuple>
-#include <type_traits>
-#include <utility>
-
-template<size_t N>
-struct Apply {
-    template<typename F, typename T, typename... A>
-    static inline auto apply(F&& f, T && t, A &&... a)
-        -> decltype(Apply<N-1>::apply(::std::forward<F>(f), ::std::forward<T>(t),
-            ::std::get<N-1>(::std::forward<T>(t)), ::std::forward<A>(a)...
-        ))
-    {
-        return Apply<N-1>::apply(::std::forward<F>(f), ::std::forward<T>(t),
-            ::std::get<N-1>(::std::forward<T>(t)), ::std::forward<A>(a)...
-        );
-    }
-};
-
-template<>
-struct Apply<0> {
-    template<typename F, typename T, typename... A>
-    static inline auto apply(F && f, T &&, A &&... a)
-        -> decltype(f(::std::forward<A>(a)...))
-    {
-        return f(::std::forward<A>(a)...);
-    }
-};
-
-template<typename F, typename T>
-inline auto apply(F && f, T && t)
-     -> decltype(Apply< ::std::tuple_size<
-         typename ::std::decay<T>::type
-     >::value>::apply(::std::forward<F>(f), ::std::forward<T>(t)))
-{
-    return Apply< ::std::tuple_size<
-        typename ::std::decay<T>::type
-    >::value>::apply(f, ::std::forward<T>(t));
-}
-#endif
-*/
 class MainWindow;
 
 class BaseEventCallable
@@ -131,6 +111,7 @@ class BaseEventCallable
     protected:
         friend class MainWindow;
         sf::Event event;
+
 };
 
 #endif

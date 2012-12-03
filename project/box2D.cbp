@@ -65,11 +65,11 @@
 		<Unit filename="include/body/convert.h" />
 		<Unit filename="include/event.hpp" />
 		<Unit filename="include/event/BaseEventCallable.hpp" />
-		<Unit filename="include/event/EventCallbackParam.hpp" />
-		<Unit filename="include/event/EventCallbackParamEvent.hpp" />
+		<Unit filename="include/event/EventCallback.hpp" />
+		<Unit filename="include/event/EventCallbackEvent.hpp" />
 		<Unit filename="include/event/EventManager.hpp" />
 		<Unit filename="include/event/EventObject.hpp" />
-		<Unit filename="include/event/EventObjectParam.hpp" />
+		<Unit filename="include/event/EventObjectEvent.hpp" />
 		<Unit filename="include/window.hpp" />
 		<Unit filename="include/window/MainWindow.hpp" />
 		<Unit filename="main.cpp" />
