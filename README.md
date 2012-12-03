@@ -42,8 +42,11 @@ Callbacks sur Evenements:
 
 Vous pouvez passer tous les aguments que vous voulez lors de la créations des évents. Les seul limites sont:
 Pour récupérer l'évent dans la callback, la callback (C / C++)  doit déclarer "const sf::Event& ev" en premier argument.
-parametrer createEvent avec les types des variables / constantes qui sont passées en paramètre :
+parametrer createEvent avec les types des variables / constantes qui sont passées en paramètre ::
+
+
     createEvent<int,char,Perso>(ma_fonction,42,"char de test",heros,const sf::Event& bind)
+
 
 Le paramètre const sf::Event& bind peut etre remplacé par::
 
