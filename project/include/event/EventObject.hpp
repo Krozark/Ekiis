@@ -11,12 +11,12 @@ class EventObject : public BaseEventCallable
         typedef void (C::*FunctionType)(Args ...);
 
         template <typename ... T>
-        EventObject(C* obj,FunctionType methode,Args... args,const T ... t): BaseEventCallable(t ...), params(std::make_tuple(args ...)), obj (obj), callback (methode) {};
+        EventObject(C& obj,FunctionType methode,Args... args,const T ... t): BaseEventCallable(t ...), params(std::make_tuple(args ...)), obj (obj), callback (methode) {};
 
         virtual void execute(const sf::Event& ev){apply(obj,callback,params);};
 
     private:
-        C* obj;
+        C& obj;
         FunctionType callback;
         std::tuple<Args...> params;
 };

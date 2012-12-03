@@ -60,25 +60,25 @@ Ret apply(Ret (*pf)(Args...), const tuple<Args...>&  tup)
 
 
 template<class Ret,typename T, class... Args, int... Indexes>
-Ret apply_helper(T* t, Ret (T::*pf)(const sf::Event&,Args...),const sf::Event& ev, index_tuple< Indexes... >, tuple<Args...>&& tup)
+Ret apply_helper(T& t, Ret (T::*pf)(const sf::Event&,Args...),const sf::Event& ev, index_tuple< Indexes... >, tuple<Args...>&& tup)
 {
-    return (t->*pf)(ev,forward<Args>( get<Indexes>(tup))...);
+    return (t.*pf)(ev,forward<Args>( get<Indexes>(tup))...);
 };
 
 template<class Ret,typename T, class... Args, int... Indexes>
-Ret apply_helper(T* t, Ret (T::*pf)(Args...), index_tuple< Indexes... >, tuple<Args...>&& tup)
+Ret apply_helper(T& t, Ret (T::*pf)(Args...), index_tuple< Indexes... >, tuple<Args...>&& tup)
 {
-    return (t->*pf)(forward<Args>( get<Indexes>(tup))...);
+    return (t.*pf)(forward<Args>( get<Indexes>(tup))...);
 };
 
 template<typename Ret,typename T,typename ... Args>
-Ret apply(T* t,Ret (T::*pf)(const sf::Event&,Args...),const sf::Event& ev, const tuple<Args...>&  tup)
+Ret apply(T& t,Ret (T::*pf)(const sf::Event&,Args...),const sf::Event& ev, const tuple<Args...>&  tup)
 {
     return apply_helper(t,pf,ev,typename make_indexes<Args...>::type(), tuple<Args...>(tup));
 };
 
 template<typename Ret,typename T,typename ... Args>
-Ret apply(T* t,Ret (T::*pf)(Args...), const tuple<Args...>&  tup)
+Ret apply(T& t,Ret (T::*pf)(Args...), const tuple<Args...>&  tup)
 {
     return apply_helper(t,pf,typename make_indexes<Args...>::type(), tuple<Args...>(tup));
 };

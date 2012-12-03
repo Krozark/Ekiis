@@ -22,16 +22,16 @@ class EventManager
         };
         /***************** OBJECT.METHODE() ***************************/
         template<typename C, typename ... Args,typename ... T>
-        static BaseEventCallable* createEvent(C* o,typename EventObject<C,Args ...>::FunctionType call,Args ... args, T ... t)
+        static BaseEventCallable* createEventO(C& o,typename EventObject<C,Args ...>::FunctionType call,Args ... args, T ... t)
         {
-            return new EventObject<C>(o,call,args ..., t ...);
+            return new EventObject<C,Args ...>(o,call,args ..., t ...);
         };
 
         /***************** OBJECT.METHODE(sf::Event) ***************************/
         template<typename C, typename ... Args,typename ... T>
-        static BaseEventCallable* createEvent(C* o,typename EventObjectEvent<C,Args ...>::FunctionType call,Args ... args, T ... t)
+        static BaseEventCallable* createEventO(C& o,typename EventObjectEvent<C,Args ...>::FunctionType call,Args ... args, T ... t)
         {
-            return new EventObjectEvent<C>(o,call,args ..., t ...);
+            return new EventObjectEvent<C, Args ...>(o,call,args ..., t ...);
         };
 
     private:

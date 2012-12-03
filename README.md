@@ -36,8 +36,8 @@ Callbacks sur Evenements:
     app.addEvent(EventManager::createEvent<int,sf::RenderWindow*,char*>(f3,42,&app,"test",sf::Event::KeyPressed,sf::Keyboard::Space)); 
 
     //avec des méthodes C++
-    app.addEvent(EventManager::createEvent<MainWindow>(this,&MainWindow::close,sf::Event::Closed));
-    app.addEvent(EventManager::createEvent<MainWindow>(this,&MainWindow::close,sf::Event::KeyPressed,sf::Keyboard::Escape));
+    app.addEvent(EventManager::createEvent(this,&MainWindow::close,sf::Event::Closed)); // <MainWindow> est optionel
+    app.addEvent(EventManager::createEvent(this,&MainWindow::close,sf::Event::KeyPressed,sf::Keyboard::Escape)); // idem
 
 
 Vous pouvez passer tous les aguments que vous voulez lors de la créations des évents. Les seul limites sont:
