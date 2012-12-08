@@ -27,7 +27,11 @@ MainWindow::MainWindow(const sf::VideoMode mode, const std::string &title,const 
     this->setView(view); // centrage de la zone de rendu sur (0;0)
 
     addCloseEvent();
-    //events.emplace_back(EventManager::createEventO(this,&MainWindow::resizeSlot,sf::Event::Resized));
+    events.emplace_back(EventManager::createEvent(*this,&MainWindow::resizeSlot,sf::Event::Resized));
+    events.emplace_back(EventManager::createEvent<MainWindow,float,float>(*this,&MainWindow::moveView,-1.f,0.f,sf::Event::KeyPressed,sf::Keyboard::Right));
+    events.emplace_back(EventManager::createEvent<MainWindow,float,float>(*this,&MainWindow::moveView,1.f,0.f,sf::Event::KeyPressed,sf::Keyboard::Left));
+    events.emplace_back(EventManager::createEvent<MainWindow,float,float>(*this,&MainWindow::moveView,0.f,-1.f,sf::Event::KeyPressed,sf::Keyboard::Down));
+    events.emplace_back(EventManager::createEvent<MainWindow,float,float>(*this,&MainWindow::moveView,0.f,1.f,sf::Event::KeyPressed,sf::Keyboard::Up));
     elapsedTime=0;
 };
 
@@ -40,8 +44,8 @@ MainWindow::~MainWindow()
 
 void MainWindow::addCloseEvent()
 {
-    events.emplace_back(EventManager::createEventO(*this,&MainWindow::close,sf::Event::Closed));
-    events.emplace_back(EventManager::createEventO(*this,&MainWindow::close,sf::Event::KeyPressed,sf::Keyboard::Escape));
+    events.emplace_back(EventManager::createEvent(*this,&MainWindow::close,sf::Event::Closed));
+    events.emplace_back(EventManager::createEvent(*this,&MainWindow::close,sf::Event::KeyPressed,sf::Keyboard::Escape));
 };
 
 void MainWindow::resizeSlot(const sf::Event& event)
@@ -55,7 +59,7 @@ void MainWindow::resizeSlot(const sf::Event& event)
 void MainWindow::moveView(float x,float y)
 {
     sf::View view = getView();
-    view.move(x,y);
+    view.move(x*elapsedTime,y*elapsedTime);
     setView(view);
 };
 
@@ -69,7 +73,10 @@ void MainWindow::doEvents()
     {
         for (int i=0;i<size;++i)
             if (*events[i] == event)
+            {
                 events[i]->execute(event);
+                //break;
+            }
     }
 
 };

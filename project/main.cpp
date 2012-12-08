@@ -75,7 +75,7 @@ int main(int argc, char * argv[])
 
     {
         sf::Image image;
-        if (!image.loadFromFile("b.png"))
+        if (!image.loadFromFile("smile.png"))
             exit(1);
         glEnable(GL_TEXTURE_2D);
         glGenTextures(1, &texture);
@@ -95,7 +95,7 @@ int main(int argc, char * argv[])
 
         world.Step(timeStep, velocityIter, positionIter); // on calcule la frame suivante
 
-        app.clear();
+        app.clear(sf::Color::Red);
 
         for (int i =bodys.size()-1;i>=0;--i)
                 bodys[i]->Draw(app);
