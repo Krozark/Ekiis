@@ -11,8 +11,13 @@ vidéo démo :
 http://www.dailymotion.com/video/xr76p2_sfml2-box2d_videogames
 
 
+SFML
+====
+
+Event
+-----
+
 Callbacks sur Evenements:
-------------------------
 
     static void f(const sf::Event& event,sf::RenderWindow* data) // ou f(sf::RenderWindow* data)
     {
@@ -30,22 +35,21 @@ Callbacks sur Evenements:
     };
 
     MainWindow app(VideoMode(WIDTH, HEIGHT, BPP), "Box2D",60);
-    // avec des fonctions C
+    // avec des fonctions C simples
     app.addEvent(EventManager::createEvent<sf::RenderWindow*>(f,&app,sf::Event::MouseButtonPressed,sf::Mouse::Left));
     app.addEvent(EventManager::createEvent<sf::RenderWindow*>(f2,&app,sf::Event::MouseButtonPressed,sf::Mouse::Right));
     app.addEvent(EventManager::createEvent<int,sf::RenderWindow*,char*>(f3,42,&app,"test",sf::Event::KeyPressed,sf::Keyboard::Space)); 
 
     //avec des méthodes C++
-    app.addEvent(EventManager::createEvent(this,&MainWindow::close,sf::Event::Closed)); // <MainWindow> est optionel
-    app.addEvent(EventManager::createEvent(this,&MainWindow::close,sf::Event::KeyPressed,sf::Keyboard::Escape)); // idem
+    app.addEvent(EventManager::createEventObj(this,&MainWindow::close,sf::Event::Closed)); // <MainWindow> est optionel
+    app.addEvent(EventManager::createEventObj(this,&MainWindow::close,sf::Event::KeyPressed,sf::Keyboard::Escape)); // idem
 
 
 Vous pouvez passer tous les aguments que vous voulez lors de la créations des évents. Les seul limites sont:
-Pour récupérer l'évent dans la callback, la callback (C / C++)  doit déclarer "const sf::Event& ev" en premier argument.
-parametrer createEvent avec les types des variables / constantes qui sont passées en paramètre ::
-
-
-    createEvent<int,char,Perso>(ma_fonction,42,"char de test",heros,const sf::Event& bind)
+* Pour récupérer l'évent dans la callback, la callback (C / C++)  doit déclarer "const sf::Event& ev" en premier argument.
+* createEvent[Obj] doit avoir la forme suivante:
+    * createEvent\<Args...\>(fontion\_name,Args ..., sf::Event ...)
+    * createEventObj\<objetClassname,Args ...\>(&objet,&objet::methode,Args ..., sf::Event ...)
 
 
 Le paramètre const sf::Event& bind peut etre remplacé par::
@@ -58,5 +62,45 @@ Le paramètre const sf::Event& bind peut etre remplacé par::
 
 Quand cet évèmement sera détecté dans la boucle principale, la callback sera exécutée (avec les éventuels paramètres passés)
 
+
+MainWindow
+----------
+
+Class metant en place des statégie pour utiliser les évenemet simplement.
+Permet également un resize de la fenètre sans zoom (agrendisement de la zone visible simple).
+Elle prédéfinie également des évènemets close, activé par défaut par Esc.
+
+
+
+Box2D
+=====
+
+
+SoftBody
+--------
+
+Un ajout à été réaliser afin de gérer des objets mous.
+Pour le moments, il est seulement possible de créer des cercles mous (SoftCircle).
+
+
+
+SFML & Box2D
+============
+
+
+Body
+----
+
+Classe body permetant de créer des objets à la fois pysique et dessinables.
+Il existe:
+* NotDrawableBody (pyhsique seulement)
+    * NOtDrawableCircle
+
+* Body (phyisique + dessinable)
+    * Circle
+    * Convex
+    * Entity
+    * Rect
+    * SoftCircle
 
 
