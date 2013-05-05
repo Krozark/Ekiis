@@ -1,7 +1,7 @@
 SRC = $(wildcard *.c*)
 OBJ = $(SRC:.cpp=.o) $(SRC:*.cpp=.o)
 
-SUBDIRS = body Event/src/Event window
+SUBDIRS = body Event/src 
 
 CLEANDIRS = $(SUBDIRS:%=clean-%)
 

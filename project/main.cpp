@@ -6,10 +6,12 @@
 #include <iostream>
 #include <functional>
 
-#include "Ekiis/window.hpp"
 #include "Ekiis/body.hpp"
-#include "Ekiis/Event/src/Event/EventManager.hpp"
+#include "Ekiis/Event/src/window.hpp"
 
+#include "Ekiis/Event/src/event/EventManager.hpp"
+
+using namespace event;
 using namespace std;
 using namespace sf;
 //extern world
@@ -53,7 +55,7 @@ int main(int argc, char * argv[])
     const int32 positionIter = 3;
 
     // SFML
-    MainWindow app(VideoMode(WIDTH, HEIGHT, BPP), "Box2D",60);
+    EventWindow app(VideoMode(WIDTH, HEIGHT, BPP), "Box2D",60);
     app.addEvent(EventManager::createEvent<sf::RenderWindow*>(addSoftCircleCallBack,&app,sf::Event::MouseButtonPressed,sf::Mouse::Left));
     app.addEvent(EventManager::createEvent<sf::RenderWindow*>(addCircleCallBack,&app,sf::Event::MouseButtonPressed,sf::Mouse::Right));
     app.addEvent(EventManager::createEvent<sf::RenderWindow*>(addEntityCallBack,&app,sf::Event::KeyPressed,sf::Keyboard::Space),true);
