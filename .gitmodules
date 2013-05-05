@@ -1,0 +1,3 @@
+[submodule "project/Ekiis/Event"]
+	path = project/Ekiis/Event
+	url = git@github.com:Krozark/SFML-Event.git
