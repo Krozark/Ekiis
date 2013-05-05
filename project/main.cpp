@@ -8,7 +8,7 @@
 
 #include "Ekiis/window.hpp"
 #include "Ekiis/body.hpp"
-#include "Ekiis/event/EventManager.hpp"
+#include "Ekiis/Event/src/Event/EventManager.hpp"
 
 using namespace std;
 using namespace sf;

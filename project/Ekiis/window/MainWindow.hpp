@@ -2,7 +2,7 @@
 #define MAINWINDOW_HPP
 
 #include <SFML/Graphics.hpp>
-#include "../event/BaseEventCallable.hpp"
+#include "../Event/src/Event/BaseEventCallable.hpp"
 
 class MainWindow : public sf::RenderWindow
 {

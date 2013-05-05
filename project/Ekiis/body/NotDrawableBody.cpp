@@ -2,6 +2,7 @@
 
 b2BodyDef NotDrawableBody::bodyDef;
 b2FixtureDef NotDrawableBody::fixtureDef;
+extern b2World world;
 
 NotDrawableBody::NotDrawableBody(float posx,float posy,b2BodyType type)
 {

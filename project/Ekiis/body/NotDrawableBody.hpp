@@ -11,7 +11,7 @@ class NotDrawableBody{
 
      public:
         NotDrawableBody(float posx,float posy,b2BodyType type = b2_dynamicBody);
-        ~NotDrawableBody();
+        virtual ~NotDrawableBody();
 
         virtual void SetPosition(float X,float Y){bodyDef.position.Set(toMet(X),-toMet(Y));}
         virtual void SetRotation(float angle){body->SetTransform(body->GetPosition(),toRad(angle));}
