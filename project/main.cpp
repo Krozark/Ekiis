@@ -7,9 +7,9 @@
 #include <functional>
 
 #include "Ekiis/body.hpp"
-#include "Ekiis/Event/src/window.hpp"
+#include <Event/window.hpp>
 
-#include "Ekiis/Event/src/event/EventManager.hpp"
+#include <Event/event/EventManager.hpp>
 
 using namespace event;
 using namespace std;

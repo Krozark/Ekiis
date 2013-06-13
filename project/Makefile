@@ -1,5 +1,5 @@
 export CC = g++
-INCPATH = -I./Ekiis
+INCPATH = -I"$(CURDIR)/Ekiis" -I"$(CURDIR)/Ekiis/Event" -I"$(CURDIR)"
 LIBS = -lsfml-audio -lsfml-graphics -lsfml-network -lsfml-system -lsfml-window -lGL -lGLU -lGLEW -lBox2D #-L/usr/local/lib
 DEFINE =
 export FLAGS = -g -std=c++0x -fexpensive-optimizations -o3  $(INCPATH) $(LIBS) $(DEFINES)
