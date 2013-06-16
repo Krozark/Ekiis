@@ -10,7 +10,7 @@
 	<File name="Ekiis/Event/src/Event/EventCallbackEvent.hpp" open="1" top="0" tabpos="11">
 		<Cursor position="254" topLine="0" />
 	</File>
-	<File name="Ekiis/Event/src/Event/EventManager.hpp" open="1" top="1" tabpos="6">
+	<File name="Ekiis/Event/src/Event/EventManager.hpp" open="1" top="0" tabpos="6">
 		<Cursor position="1595" topLine="6" />
 	</File>
 	<File name="Ekiis/Event/src/Event/EventObjectEvent.hpp" open="1" top="0" tabpos="8">
@@ -37,7 +37,7 @@
 	<File name="Ekiis/window/MainWindow.hpp" open="1" top="0" tabpos="4">
 		<Cursor position="105" topLine="0" />
 	</File>
-	<File name="main.cpp" open="1" top="0" tabpos="9">
+	<File name="main.cpp" open="1" top="1" tabpos="4">
 		<Cursor position="183" topLine="0" />
 	</File>
 </CodeBlocks_layout_file>

@@ -1,5 +1,5 @@
-#define WIDTH 1600
-#define HEIGHT 900
+#define WIDTH 1200
+#define HEIGHT 800
 #define BPP 32
 
 
