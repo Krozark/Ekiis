@@ -20,17 +20,17 @@ Requirement:
 
 Exemple:
 --------
-    ```shell
-    git clone --recursive git@github.com:Krozark/Ekiis.git
-    cd Ekiis/project
-    make
-    ./ekiis
-    ```
+```shell
+git clone --recursive git@github.com:Krozark/Ekiis.git
+cd Ekiis/project
+make
+./ekiis
+```
 
-    Or your can buil it using the code::bloks file if your are a user of  windows (not test on it).
+Or your can buil it using the code::bloks file if your are a user of  windows (not test on it).
 
 
-    You can use the Up/Down/Left/Right arrow to wove the window, and Right clik/Left clik / Space to build some object.
+You can use the Up/Down/Left/Right arrow to wove the window, and Right clik/Left clik / Space to build some object.
 
 
 SFML
