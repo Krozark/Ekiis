@@ -7,8 +7,10 @@ Comme il n'utilise pas les même unités (dégrée / radian, pixel / mettre), le
 permettant de ne jamais ce soucier des unités, et mettant en place des objets de plus haut niveau 
 (tel que des corps mous, non disponible dans Box2D )
 
-vidéo démo :
+vidéos démos :
 http://www.dailymotion.com/video/xr76p2_sfml2-box2d_videogames
+
+https://www.youtube.com/watch?v=4zhtKRk_bvY
 
 
 Requirement:
