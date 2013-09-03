@@ -42,6 +42,7 @@
 			<Add option="-std=c++0x" />
 			<Add option="-Wall" />
 			<Add option="-fpermissive" />
+			<Add directory="Ekiis/Event" />
 		</Compiler>
 		<Linker>
 			<Add option="-lGL" />
@@ -53,13 +54,17 @@
 			<Add library="sfml-system" />
 			<Add library="sfml-window" />
 		</Linker>
-		<Unit filename="Ekiis/Event/src/Event/BaseEventCallable.cpp" />
-		<Unit filename="Ekiis/Event/src/Event/BaseEventCallable.hpp" />
-		<Unit filename="Ekiis/Event/src/Event/EventCallback.hpp" />
-		<Unit filename="Ekiis/Event/src/Event/EventCallbackEvent.hpp" />
-		<Unit filename="Ekiis/Event/src/Event/EventManager.hpp" />
-		<Unit filename="Ekiis/Event/src/Event/EventObject.hpp" />
-		<Unit filename="Ekiis/Event/src/Event/EventObjectEvent.hpp" />
+		<Unit filename="Ekiis/Event/Event/event/BaseEventCallable.cpp" />
+		<Unit filename="Ekiis/Event/Event/event/BaseEventCallable.hpp" />
+		<Unit filename="Ekiis/Event/Event/event/EventCallback.hpp" />
+		<Unit filename="Ekiis/Event/Event/event/EventCallbackEvent.hpp" />
+		<Unit filename="Ekiis/Event/Event/event/EventManager.hpp" />
+		<Unit filename="Ekiis/Event/Event/event/EventObject.hpp" />
+		<Unit filename="Ekiis/Event/Event/event/EventObjectEvent.hpp" />
+		<Unit filename="Ekiis/Event/Event/window/EventTarget.cpp" />
+		<Unit filename="Ekiis/Event/Event/window/EventTarget.hpp" />
+		<Unit filename="Ekiis/Event/Event/window/EventWindow.cpp" />
+		<Unit filename="Ekiis/Event/Event/window/EventWindow.hpp" />
 		<Unit filename="Ekiis/body/Circle.cpp" />
 		<Unit filename="Ekiis/body/Circle.hpp" />
 		<Unit filename="Ekiis/body/Convex.cpp" />
@@ -77,8 +82,6 @@
 		<Unit filename="Ekiis/body/body.cpp" />
 		<Unit filename="Ekiis/body/body.hpp" />
 		<Unit filename="Ekiis/body/convert.h" />
-		<Unit filename="Ekiis/window/MainWindow.cpp" />
-		<Unit filename="Ekiis/window/MainWindow.hpp" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />

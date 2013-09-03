@@ -11,6 +11,28 @@ vidéo démo :
 http://www.dailymotion.com/video/xr76p2_sfml2-box2d_videogames
 
 
+Requirement:
+------------
+
+    SFML-2.0
+    Box2D-2.2+ (test with 2.2.1)
+
+
+Exemple:
+--------
+    ```shell
+    git clone --recursive git@github.com:Krozark/Ekiis.git
+    cd Ekiis/project
+    make
+    ./ekiis
+    ```
+
+    Or your can buil it using the code::bloks file if your are a user of  windows (not test on it).
+
+
+    You can use the Up/Down/Left/Right arrow to wove the window, and Right clik/Left clik / Space to build some object.
+
+
 SFML
 ====
 

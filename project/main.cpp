@@ -45,6 +45,20 @@ static void addEntityCallBack(sf::RenderWindow* data)
     bodys.emplace_back(new Entity(pos.x,pos.y));
 };
 
+static void moveWindow(sf::RenderWindow* window,float x,float y)
+{
+    sf::View view(window->getView());
+    view.move(x,y);
+    window->setView(view);
+}
+/*else if(event.type == sf::Event::KeyPressed and event.key.code == sf::Keyboard::Right)
+    app.move(10.f,0.f);
+else if(event.type == sf::Event::KeyPressed and event.key.code == sf::Keyboard::Down)
+    app.move(0.f,10.f);
+else if(event.type == sf::Event::KeyPressed and event.key.code == sf::Keyboard::Left)
+    app.move(-10.f,0.f);
+    */
+
 int main(int argc, char * argv[])
 {
     // VARS
@@ -59,6 +73,12 @@ int main(int argc, char * argv[])
     app.addEvent(EventManager::createEvent<sf::RenderWindow*>(addSoftCircleCallBack,&app,sf::Event::MouseButtonPressed,sf::Mouse::Left));
     app.addEvent(EventManager::createEvent<sf::RenderWindow*>(addCircleCallBack,&app,sf::Event::MouseButtonPressed,sf::Mouse::Right));
     app.addEvent(EventManager::createEvent<sf::RenderWindow*>(addEntityCallBack,&app,sf::Event::KeyPressed,sf::Keyboard::Space),true);
+    //Move event
+    app.addEvent(EventManager::createEvent<sf::RenderWindow*,float,float>(moveWindow,&app,10.f,0.f,sf::Event::KeyPressed,sf::Keyboard::Right),true);
+    app.addEvent(EventManager::createEvent<sf::RenderWindow*,float,float>(moveWindow,&app,-10.f,0.f,sf::Event::KeyPressed,sf::Keyboard::Left),true);
+    app.addEvent(EventManager::createEvent<sf::RenderWindow*,float,float>(moveWindow,&app,0.f,10.f,sf::Event::KeyPressed,sf::Keyboard::Down),true);
+    app.addEvent(EventManager::createEvent<sf::RenderWindow*,float,float>(moveWindow,&app,0.f,-10.f,sf::Event::KeyPressed,sf::Keyboard::Up),true);
+
 
 
     // BOX2D

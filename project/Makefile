@@ -12,7 +12,7 @@ OBJ = $(SRC:.cpp=.o) $(SRC:*.cpp=.o)
 
 SUBDIRS = Ekiis obj
 
-export EXEC = Ekiis.exe
+export EXEC = ekiis
 
 CLEANDIRS = $(SUBDIRS:%=clean-%)
 
