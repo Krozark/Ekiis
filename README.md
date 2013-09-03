@@ -4,7 +4,7 @@ SFML2---Box2D
 Développement d'un moteur de jeu 2D.
 Utilisation de SFML2 + OpenGL pour le rendu graphique et Box2D pour le moteur physique.
 Comme il n'utilise pas les même unités (dégrée / radian, pixel / mettre), le but est de mettre une interface 
-permettant de ne jamais ce soucier des unitées, et mettant en place des objets de plus haut niveau 
+permettant de ne jamais ce soucier des unités, et mettant en place des objets de plus haut niveau 
 (tel que des corps mous, non disponible dans Box2D )
 
 vidéo démo :
@@ -28,11 +28,11 @@ make
 ./ekiis
 ```
 
-Or your can buil it using the code::bloks file if your are a user of  windows (not test on it).
+Il est également possible d'utiliser le ficher code::bloks si vous êtes un utilisateur windows. 
 
+On peut aussi utiliser les flèches du clavier pour se déplacer dans la fenêtre ainsi que les clique et la touche espace pour faire apparaitre différent objets.
 
-You can use the Up/Down/Left/Right arrow to wove the window, and Right clik/Left clik / Space to build some object.
-
+physique
 
 SFML
 ====
@@ -72,7 +72,7 @@ Vous pouvez passer tous les aguments que vous voulez lors de la créations des �
 * Pour récupérer l'évent dans la callback, la callback (C / C++)  doit déclarer "const sf::Event& ev" en premier argument.
 * createEvent[Obj] doit avoir la forme suivante:
     * createEvent\<Args...\>(fontion\_name,Args ..., sf::Event ...)
-    * createEventObj\<objetClassname,Args ...\>(&objet,&objet::methode,Args ..., sf::Event ...)
+    * createEventObj\<objetClassname,Args ...\>(&objet,&objet::méthode,Args ..., sf::Event ...)
 
 
 Le paramètre const sf::Event& bind peut etre remplacé par::
@@ -83,15 +83,15 @@ Le paramètre const sf::Event& bind peut etre remplacé par::
        (const sf::Event::EventType &evtType,const sf::Keyboard::Key code, bool alt=false, bool ctlr=false, bool shift=false, bool system=false);
        (const sf::Event::EventType &evtType,const int joyId, const int button);
 
-Quand cet évèmement sera détecté dans la boucle principale, la callback sera exécutée (avec les éventuels paramètres passés)
+Quand cet évènement sera détecté dans la boucle principale, la callback sera exécutée (avec les éventuels paramètres passés)
 
 
 MainWindow
 ----------
 
-Class metant en place des statégie pour utiliser les évenemet simplement.
-Permet également un resize de la fenètre sans zoom (agrendisement de la zone visible simple).
-Elle prédéfinie également des évènemets close, activé par défaut par Esc.
+Class mettant en place des statégie pour utiliser les évènement simplement.
+Permet également un resize de la fenêtre sans zoom (agrandissement de la zone visible simple).
+Elle prédéfinie également des évènements close, activé par défaut par Esc.
 
 
 
@@ -114,12 +114,12 @@ SFML & Box2D
 Body
 ----
 
-Classe body permetant de créer des objets à la fois pysique et dessinables.
+Classe body permettant de créer des objets à la fois physique et dessinables.
 Il existe:
-* NotDrawableBody (pyhsique seulement)
+* NotDrawableBody (physique seulement)
     * NOtDrawableCircle
 
-* Body (phyisique + dessinable)
+* Body (physique + dessinable)
     * Circle
     * Convex
     * Entity
